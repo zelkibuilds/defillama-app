@@ -233,7 +233,6 @@ export const columns = [
 			<NameYieldPool
 				value={value}
 				poolId={rowValues.id}
-				project={rowValues.project}
 				url={rowValues.url ?? ''}
 				index={rowIndex !== null && rowIndex + 1}
 				bookmark
