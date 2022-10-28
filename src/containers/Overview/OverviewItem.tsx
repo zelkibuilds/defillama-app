@@ -75,8 +75,8 @@ export const ProtocolChart = ({
 	fullChart = false,
 	totalAllTime
 }: IDexChartsProps) => {
-	const typeString = type === 'volumes' ? 'Volumes' : upperCaseFirst(type)
-	const typeSimple = type === 'volumes' || type === 'options' ? 'volume' : type
+	const typeString = type === 'dexs' ? 'Volumes' : upperCaseFirst(type)
+	const typeSimple = type === 'dexs' || type === 'options' ? 'volume' : type
 	return (
 		<StatsSection>
 			{!fullChart && (
@@ -145,7 +145,7 @@ function ProtocolContainer(props: IProtocolContainerProps) {
 	const { blockExplorerLink, blockExplorerName } = getBlockExplorer(props.protocolSummary.address)
 	const enableVersionsChart = Object.keys(props.protocolSummary.protocolsData ?? {}).length > 1
 	const enableTokensChart = props.protocolSummary.type === 'incentives'
-	const typeSimple = props.protocolSummary.type === 'volumes' ? 'volume' : props.protocolSummary.type
+	const typeSimple = props.protocolSummary.type === 'dexs' ? 'volume' : props.protocolSummary.type
 	const useTotalDataChart = props.protocolSummary.type === 'fees' || props.protocolSummary.type === 'options'
 	const mainChart = React.useMemo(() => {
 		let chartData: IJoin2ReturnType

@@ -42,7 +42,7 @@ export async function getStaticPaths() {
 }
 
 export default function ProtocolItem({ protocolSummary, ...props }: InferGetStaticPropsType<typeof getStaticProps>) {
-	const type = protocolSummary.type === 'volumes' ? 'volume' : protocolSummary.type
+	const type = protocolSummary.type === 'dexs' ? 'volume' : protocolSummary.type
 	return (
 		<OverviewItemContainer
 			title={`${protocolSummary.name} ${type} - DefiLlama`}

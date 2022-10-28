@@ -45,7 +45,7 @@ export const getOverviewItemPageData = async (
 ): Promise<ProtocolAdaptorSummaryProps> => {
 	const item = await getOverviewItem(type, protocolName, dataType)
 	let label: string
-	if (type === 'volumes') {
+	if (type === 'dexs') {
 		label = "Volume"
 	} else if (type === 'options') {
 		label = "Notionial volume"
@@ -194,9 +194,6 @@ export const getChainsPageData = async (type: string): Promise<IOverviewProps> =
 		breakdown24h: null,
 		module: chain
 	}))
-
-	/* 	...Object.fromEntries(volumesAtDate.slice(0, 11)),
-			Others: volumesAtDate.slice(11).reduce((acc, curr: [string, number]) => (acc += curr[1]), 0) */
 
 	const allCharts = dataByChain.map(chainData => [chainData.chain, chainData.totalDataChart]) as IChartsList
 	let aggregatedChart = joinCharts2(...allCharts)
