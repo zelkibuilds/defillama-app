@@ -1,8 +1,8 @@
 import { GetStaticProps, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import * as React from 'react'
+// import * as React from 'react'
 import { revalidate } from '~/api'
 import { getOverview, getOverviewItemPageData, ProtocolAdaptorSummaryProps } from '~/api/categories/adaptors'
-import OverviewItemContainer from '~/containers/Overview/OverviewItem'
+// import OverviewItemContainer from '~/containers/Overview/OverviewItem'
 import { standardizeProtocolName } from '~/utils'
 import { getColor } from '~/utils/getColor'
 
@@ -45,13 +45,18 @@ export const getStaticPathsByType = (type: string) => async () => {
 	return { paths, fallback: 'blocking' }
 }
 
-export default function ProtocolItem({ protocolSummary, ...props }: InferGetStaticPropsType<typeof getStaticProps>) {
+/* export default function ProtocolItem({ protocolSummary, ...props }: InferGetStaticPropsType<typeof getStaticProps>) {
 	const type = protocolSummary.type === 'volumes' ? 'volume' : protocolSummary.type
-	return (
+	return {
 		<OverviewItemContainer
 			title={`${protocolSummary.name} ${type} - DefiLlama`}
 			{...props}
 			protocolSummary={protocolSummary}
 		/>
-	)
+	}
+	return <>[ITEM] component</>
+} */
+
+export default function ReproduceErrorSimple() {
+	return <>[ITEM] component</>
 }
