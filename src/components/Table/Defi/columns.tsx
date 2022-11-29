@@ -6,7 +6,14 @@ import QuestionHelper from '~/components/QuestionHelper'
 import TokenLogo from '~/components/TokenLogo'
 import { Tooltip2 } from '~/components/Tooltip'
 import { ButtonYields } from '~/layout/Pool'
-import { capitalizeFirstLetter, chainIconUrl, formattedNum, formattedPercent, slug, toNiceDayMonthAndYear } from '~/utils'
+import {
+	capitalizeFirstLetter,
+	chainIconUrl,
+	formattedNum,
+	formattedPercent,
+	slug,
+	toNiceDayMonthAndYear
+} from '~/utils'
 import { Total24hColumn } from '../Adaptors/columns/common'
 import { AccordionButton, Name } from '../shared'
 import { formatColumnOrder } from '../utils'
@@ -68,7 +75,7 @@ export const forksColumn: ColumnDef<IForksRow>[] = [
 		}
 	},
 	{
-		header: 'TVL',
+		header: 'TVfffsL',
 		accessorKey: 'tvl',
 		cell: ({ getValue }) => <>{'$' + formattedNum(getValue())}</>,
 		meta: {
@@ -406,25 +413,34 @@ export const cexColumn: ColumnDef<any>[] = [
 
 			return (
 				<Name>
-					<span>{index + 1}</span> 
-						{row.original.slug === undefined? getValue(): 
-							<CustomLink href={`/protocol/${slug(row.original.slug)}`}>{getValue()}</CustomLink>
-						}
+					<span>{index + 1}</span>
+					{row.original.slug === undefined ? (
+						getValue()
+					) : (
+						<CustomLink href={`/protocol/${slug(row.original.slug)}`}>{getValue()}</CustomLink>
+					)}
 				</Name>
 			)
 		}
 	},
 	{
-		header: 'TVL',
+		header: 'TVLfff',
 		accessorKey: 'tvl',
 		cell: (info) => {
-			return <>{info.getValue() === undefined?
-			<QuestionHelper text="This CEX has not published a list of all hot and cold wallets"/>:
-			'$' + formattedNum(info.getValue())}</>
+			return (
+				<>
+					{info.getValue() === undefined ? (
+						<QuestionHelper text="This CEX has not published a list of all hot and cold wallets" />
+					) : (
+						'$' + formattedNum(info.getValue())
+					)}
+				</>
+			)
 		},
 		size: 120,
-		meta:{
-			headerHelperText: "This excludes IOU assets issued by the CEX that are already counted on another chain, such as Binance-pegged BTC in BSC, which is already counted in Bitcoin chain"
+		meta: {
+			headerHelperText:
+				'This excludes IOU assets issued by the CEX that are already counted on another chain, such as Binance-pegged BTC in BSC, which is already counted in Bitcoin chain'
 		}
 	},
 	{
@@ -432,31 +448,42 @@ export const cexColumn: ColumnDef<any>[] = [
 		accessorKey: 'cleanTvl',
 		cell: (info) => {
 			const coinSymbol = info.row.original.coinSymbol
-			return <>{info.getValue() === undefined?
-			<QuestionHelper text="This CEX has not published a list of all hot and cold wallets"/>:
-			<span style={{ display: 'flex', gap: '4px'}}>
-				{coinSymbol===undefined?
-					<QuestionHelper text={`Original TVL doesn't contain any coin issued by this CEX`}/>:
-					<QuestionHelper text={`This excludes all TVL from ${info.row.original.coinSymbol}, which is a token issued by this CEX`}/>
-				}
-				<span>{'$' + formattedNum(info.getValue())}</span>
-			</span>}</>
+			return (
+				<>
+					{info.getValue() === undefined ? (
+						<QuestionHelper text="This CEX has not published a list of all hot and cold wallets" />
+					) : (
+						<span style={{ display: 'flex', gap: '4px' }}>
+							{coinSymbol === undefined ? (
+								<QuestionHelper text={`Original TVL doesn't contain any coin issued by this CEX`} />
+							) : (
+								<QuestionHelper
+									text={`This excludes all TVL from ${info.row.original.coinSymbol}, which is a token issued by this CEX`}
+								/>
+							)}
+							<span>{'$' + formattedNum(info.getValue())}</span>
+						</span>
+					)}
+				</>
+			)
 		},
 		size: 120,
-		meta:{
-			headerHelperText: "TVL of the CEX excluding all assets issued by itself, such as their own token"
+		meta: {
+			headerHelperText: 'TVL of the CEX excluding all assets issued by itself, such as their own token'
 		}
 	},
 	{
 		header: 'Liabilities auditor',
 		accessorKey: 'auditor',
 		size: 120,
-		cell: ({ getValue }) => <>{getValue() === undefined?
-			<QuestionHelper text="This CEX has no third party liability audits"/>:
-			getValue()}</>,
+		cell: ({ getValue }) => (
+			<>
+				{getValue() === undefined ? <QuestionHelper text="This CEX has no third party liability audits" /> : getValue()}
+			</>
+		)
 	},
 	{
-		cell: ({ getValue }) => <>{getValue() === undefined?null:toNiceDayMonthAndYear(getValue())}</>,
+		cell: ({ getValue }) => <>{getValue() === undefined ? null : toNiceDayMonthAndYear(getValue())}</>,
 		size: 120,
 		header: 'Last audit date',
 		accessorKey: 'lastAuditDate'
@@ -466,42 +493,43 @@ export const cexColumn: ColumnDef<any>[] = [
 		accessorKey: 'auditLink',
 		size: 48,
 		enableSorting: false,
-		cell: ({ getValue }) => (
-			getValue()===undefined?null:
-			<ButtonYields
-				as="a"
-				href={getValue() as string}
-				target="_blank"
-				rel="noopener noreferrer"
-				data-lgonly
-				useTextColor={true}
-				style={{width: "21px"}}
-			>
-				<ArrowUpRight size={14} />
-			</ButtonYields>
-		)
+		cell: ({ getValue }) =>
+			getValue() === undefined ? null : (
+				<ButtonYields
+					as="a"
+					href={getValue() as string}
+					target="_blank"
+					rel="noopener noreferrer"
+					data-lgonly
+					useTextColor={true}
+					style={{ width: '21px' }}
+				>
+					<ArrowUpRight size={14} />
+				</ButtonYields>
+			)
 	},
 	{
 		header: 'Link to Wallets',
 		accessorKey: 'walletsLink',
 		size: 90,
 		enableSorting: false,
-		cell: ({ getValue }) => (
-			getValue()===undefined?
-			<QuestionHelper text="This CEX has no published their wallet addresses"/>:
-			<ButtonYields
-				as="a"
-				href={getValue() as string}
-				target="_blank"
-				rel="noopener noreferrer"
-				data-lgonly
-				useTextColor={true}
-				style={{width: "21px"}}
-			>
-				<ArrowUpRight size={14} />
-			</ButtonYields>
-		)
-	},
+		cell: ({ getValue }) =>
+			getValue() === undefined ? (
+				<QuestionHelper text="This CEX has no published their wallet addresses" />
+			) : (
+				<ButtonYields
+					as="a"
+					href={getValue() as string}
+					target="_blank"
+					rel="noopener noreferrer"
+					data-lgonly
+					useTextColor={true}
+					style={{ width: '21px' }}
+				>
+					<ArrowUpRight size={14} />
+				</ButtonYields>
+			)
+	}
 ]
 
 // key: min width of window/screen

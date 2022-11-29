@@ -77,7 +77,7 @@ export const getOverviewItemPageData = async (
 	}
 }
 
-// - used in /overview/[type] and /overview/[type]/chains/[chain]
+// - used in /[type] and /[type]/chains/[chain]
 export const getChainPageData = async (type: string, chain?: string): Promise<IOverviewProps> => {
 	const request = (await fetch(getAPIUrl(type, chain, type === 'fees', true)).then((res) =>
 		res.json()
@@ -148,15 +148,21 @@ export const getChainPageData = async (type: string, chain?: string): Promise<IO
 			module: protocol.module,
 			subRows: protocol.protocolsStats
 				? Object.entries(protocol.protocolsStats)
-					.map(([versionName, summary]) => ({
-						...protocol,
-						displayName: `${versionName.toUpperCase()} - ${protocol.name}`,
-						...summary,
-						totalAllTime: null,
-						revenue24h: revenueProtocols?.[protocol.name]?.protocolsStats[versionName]?.total24h ?? (0 as number)
-					}))
+					.map(([versionName, summary]) => {
+						console.log("uh", versionName, protocol?.methodology, protocol?.methodology?.[versionName])
+						return {
+							...protocol,
+							displayName: `${versionName.toUpperCase()} - ${protocol.name}`,
+							...summary,
+							totalAllTime: null,
+							methodology: protocol?.methodology?.[versionName] ?? null,
+							revenue24h: revenueProtocols?.[protocol.name]?.protocolsStats[versionName]?.total24h ?? (0 as number)
+						}
+					})
 					.sort((first, second) => 0 - (first.total24h > second.total24h ? 1 : -1))
-				: null
+				: null,
+			dailyUserFees: protocol.dailyUserFees,
+			methodology: protocol?.methodology?.[protocol.module] ?? null
 		}
 	})
 
