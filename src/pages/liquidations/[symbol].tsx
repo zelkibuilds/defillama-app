@@ -15,7 +15,6 @@ import { TableSwitch } from '~/components/LiquidationsPage/TableSwitch'
 import { PositionsTable, SmolHints } from '~/components/LiquidationsPage/PositionsTable'
 import { LIQS_SETTINGS, useLiqsManager } from '~/contexts/LocalStorage'
 import type { ISearchItem } from '~/components/Search/types'
-import { revalidate } from '~/api'
 import { assetIconUrl } from '~/utils'
 import {
 	ChartData,
@@ -31,9 +30,12 @@ export const getStaticProps: GetStaticProps<{ data: ChartData; prevData: ChartDa
 	const { assets: options } = await getAvailableAssetsList()
 	const data = await getLatestChartData(symbol, 100)
 	const prevData = (await getPrevChartData(symbol, 100, 3600 * 24)) ?? data
+
+	console.log('/liquidations get static props ', Date.now())
+
 	return {
 		props: { data, prevData, options },
-		revalidate: revalidate(5)
+		revalidate: 600
 	}
 }
 

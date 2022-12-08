@@ -70,19 +70,6 @@ const nextConfig = {
 	compiler: {
 		styledComponents: true
 	},
-	async headers() {
-		return [
-			{
-				source: '/liquidations/:path*',
-				headers: [
-					{
-						key: 'Cache-Control',
-						value: 's-maxage=60, stale-while-revalidate'
-					}
-				]
-			}
-		]
-	},
 	experimental: {}
 }
 
