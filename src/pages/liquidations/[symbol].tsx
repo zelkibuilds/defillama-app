@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps<{ data: ChartData; prevData: ChartDa
 	const data = await getLatestChartData(symbol, 100)
 	const prevData = (await getPrevChartData(symbol, 100, 3600 * 24)) ?? data
 
-	console.log('/liquidations get static props ', Date.now())
+	console.log(`get static props of /liquidations/${symbol}`, Date.now())
 
 	return {
 		props: { data, prevData, options },
