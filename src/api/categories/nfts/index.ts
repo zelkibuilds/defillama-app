@@ -78,7 +78,7 @@ export const getNFTData = async () => {
 		const chart = await fetch(NFT_CHART_API).then((r) => r.json())
 		const { data: collections } = await fetch(NFT_COLLECTIONS_API).then((r) => r.json())
 		const statistics = getNFTStatistics(chart)
-
+		if (!chart || !collections || !statistics) throw Error("No data found")
 		return {
 			chart,
 			collections,
