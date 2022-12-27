@@ -13,14 +13,14 @@ import { getNFTChainChartData, getNFTChainsData } from '~/api/categories/nfts'
 export async function getStaticProps() {
 	const chainData = await getNFTChainsData()
 
-	const currentData = chainData.reduce((acc, curr) => {
+	const currentData = (chainData ?? []).reduce((acc, curr) => {
 		const { chain: name, totalVolumeUSD: value } = curr
 		if (name && value) {
 			return (acc = [...acc, { name, value }])
 		} else return acc
 	}, [])
 
-	const chainsUnique = chainData.reduce((acc, curr) => {
+	const chainsUnique = (chainData ?? []).reduce((acc, curr) => {
 		const chain = curr.chain || null
 		if (chain) {
 			return (acc = [...acc, curr.chain])

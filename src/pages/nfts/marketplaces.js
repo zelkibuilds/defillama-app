@@ -13,7 +13,7 @@ import { getNFTMarketplacesData, getNFTMarketplaceChartData } from '~/api/catego
 export async function getStaticProps() {
 	const marketplaceData = await getNFTMarketplacesData()
 
-	const currentData = marketplaceData.reduce((acc, curr) => {
+	const currentData = (marketplaceData ?? []).reduce((acc, curr) => {
 		const { marketplace: name, totalVolumeUSD: value } = curr
 		if (name && value) {
 			return (acc = [...acc, { name, value }])
