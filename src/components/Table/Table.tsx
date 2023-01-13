@@ -40,29 +40,7 @@ export default function VirtualTable({
 	const rowVirtualizer = useWindowVirtualizer({
 		count: rows.length,
 		estimateSize: () => rowSize || 50,
-		overscan: 20,
-		rangeExtractor: React.useCallback(
-			(range) => {
-				if (!tableTop) {
-					return defaultRangeExtractor(range)
-				}
-
-				const cutoff = tableTop / 40
-
-				let startIndex = range.startIndex
-
-				if (range.startIndex <= cutoff) {
-					startIndex = 1
-				}
-
-				if (range.startIndex - cutoff > 0) {
-					startIndex = range.startIndex - Math.round(cutoff)
-				}
-
-				return defaultRangeExtractor({ ...range, startIndex })
-			},
-			[tableTop]
-		)
+		overscan: 20
 	})
 
 	const virtualItems = rowVirtualizer.getVirtualItems()

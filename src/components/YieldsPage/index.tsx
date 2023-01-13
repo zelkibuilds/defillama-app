@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import { Panel } from '~/components'
 import { YieldsPoolsTable } from '~/components/Table'
-import { YieldFiltersV2 } from '~/components/Filters'
+import { YieldFilters } from '~/components/Filters'
 import { AnnouncementWrapper } from '~/components/Announcement'
 import { useFormatYieldQueryParams } from './hooks'
 import { toFilterPool } from './utils'
@@ -102,7 +102,7 @@ const YieldPage = ({ pools, projectList, chainList, categoryList, tokens, tokenS
 					</AnnouncementWrapper>
 				)}
 
-			<YieldFiltersV2
+			<YieldFilters
 				header="Yield Rankings"
 				poolsNumber={poolsData.length}
 				projectsNumber={selectedProjects.length}

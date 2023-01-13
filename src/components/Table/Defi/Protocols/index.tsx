@@ -31,7 +31,8 @@ const columnSizesKeys = Object.keys(columnSizes)
 export function ProtocolsTable({
 	data,
 	addlColumns,
-	removeColumns
+	removeColumns,
+	...props
 }: {
 	data: Array<IProtocolRow>
 	addlColumns?: Array<string>
@@ -89,7 +90,7 @@ export function ProtocolsTable({
 		instance.setColumnOrder(order)
 	}, [windowSize, instance])
 
-	return <VirtualTable instance={instance} />
+	return <VirtualTable instance={instance} {...props} />
 }
 
 export function RecentlyListedProtocolsTable({ data }: { data: Array<IProtocolRow> }) {

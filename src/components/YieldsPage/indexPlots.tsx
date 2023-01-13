@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
-import { YieldFiltersV2 } from '~/components/Filters'
+import { YieldFilters } from '~/components/Filters'
 import dynamic from 'next/dynamic'
 import { useFormatYieldQueryParams } from './hooks'
 import { toFilterPool } from './utils'
@@ -67,7 +67,7 @@ const PlotsPage = ({ pools, chainList, projectList, categoryList, median, tokens
 
 	return (
 		<>
-			<YieldFiltersV2
+			<YieldFilters
 				header="Yields Overview"
 				tokens={tokens}
 				tokensList={tokenSymbolsList}

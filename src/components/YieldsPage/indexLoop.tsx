@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import { Panel } from '~/components'
 import YieldsLoopTable from '../Table/Yields/Loop'
-import { YieldFiltersV2 } from '~/components/Filters'
+import { YieldFilters } from '~/components/Filters'
 import { useFormatYieldQueryParams } from './hooks'
 import { toFilterPool } from './utils'
 
@@ -73,7 +73,7 @@ const YieldPageLoop = ({ pools, projectList, chainList, categoryList, tokens }) 
 
 	return (
 		<>
-			<YieldFiltersV2
+			<YieldFilters
 				header="Leveraged Lending"
 				poolsNumber={poolsData.length}
 				projectsNumber={selectedProjects.length}

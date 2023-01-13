@@ -7,22 +7,23 @@ import { useRouter } from 'next/router'
 export const ANNOUNCEMENT = {
 	defi: {
 		key: 'defi-flag-announcement',
-		value: 'defi3'
+		value: 'defi4'
 	},
 	yields: {
 		key: 'yield-flag-announcement',
-		value: 'yield3'
+		value: 'yield4'
 	}
 }
 
 export default function Announcement({
 	children,
-	notCancellable
+	notCancellable,
+	...props
 }: {
 	children: React.ReactNode
 	notCancellable?: boolean
 }) {
-	const [_, rerender] = React.useState(1)
+	const [display, setDisplay] = React.useState(true)
 	const router = useRouter()
 
 	const { key, value } = ANNOUNCEMENT[router.pathname.startsWith('/yields') ? 'yields' : 'defi']
@@ -32,17 +33,17 @@ export default function Announcement({
 
 	const closeAnnouncement = () => {
 		localStorage.setItem(routeAnnouncementKey, JSON.stringify({ value: routeAnnouncementValue }))
-		rerender(1)
+		setDisplay(false)
 	}
 
 	const store = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem(routeAnnouncementKey) || '{}') : {}
 
-	if (notCancellable ? false : store.value === routeAnnouncementValue) {
+	if (notCancellable ? false : store.value === routeAnnouncementValue || !display) {
 		return null
 	}
 
 	return (
-		<AnnouncementWrapper>
+		<AnnouncementWrapper {...props}>
 			{children}
 			{!notCancellable && (
 				<Close onClick={closeAnnouncement}>

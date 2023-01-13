@@ -134,7 +134,7 @@ export const Popover = styled(AriakitMenu)`
 	}
 
 	@media screen and (min-width: 640px) {
-		height: unset;
+		height: var(--popover-available-height);
 		max-height: 400px;
 		font-size: 0.825rem;
 		font-weight: 400;

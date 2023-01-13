@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import { Panel } from '~/components'
 import YieldsOptimizerTable from '~/components/Table/Yields/Optimizer'
-import { YieldFiltersV2 } from '~/components/Filters'
+import { YieldFilters } from '~/components/Filters'
 import { useFormatYieldQueryParams } from './hooks'
 import { filterPool, findOptimizerPools, formatOptimizerPool } from './utils'
 
@@ -74,7 +74,7 @@ const YieldsOptimizerPage = ({ pools, projectList, chainList, categoryList, lend
 
 	return (
 		<>
-			<YieldFiltersV2
+			<YieldFilters
 				header={header}
 				chainList={chainList}
 				selectedChains={selectedChains}

@@ -9,7 +9,7 @@ import { YieldFilterDropdowns } from './Dropdowns'
 import { DropdownsWrapper, Header, SearchWrapper, Wrapper } from '../v2Base'
 import type { IYieldFiltersProps } from './types'
 
-export function YieldFiltersV2({
+export function YieldFilters({
 	header,
 	poolsNumber,
 	projectsNumber,
@@ -41,7 +41,6 @@ export function YieldFiltersV2({
 			<Header>
 				<h1>{header}</h1>
 				{trackingStats && <p>{trackingStats}</p>}
-				{/* <button>Save This Search</button> */}
 			</Header>
 			<Wrapper>
 				{strategyInputsData && (

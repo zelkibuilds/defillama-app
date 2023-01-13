@@ -30,7 +30,7 @@ export const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-	padding: 20px 16px 24px;
+	padding: 20px 16px;
 	background: ${({ theme }) => (theme.mode === 'dark' ? 'rgba(0, 0, 0, 0.6)' : 'rgba(246, 246, 246, 0.6)')};
 	border-radius: 0 0 12px 12px;
 	border: 1px solid ${({ theme }) => theme.divider};

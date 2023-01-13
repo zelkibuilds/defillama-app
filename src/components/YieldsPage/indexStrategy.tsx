@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import { Panel } from '~/components'
 import YieldsStrategyTable from '~/components/Table/Yields/Strategy'
-import { YieldFiltersV2 } from '~/components/Filters'
+import { YieldFilters } from '~/components/Filters'
 import { filterPool, findStrategyPools } from './utils'
 import { useFormatYieldQueryParams } from './hooks'
 
@@ -87,7 +87,7 @@ const YieldsStrategyPage = ({
 
 	return (
 		<>
-			<YieldFiltersV2
+			<YieldFilters
 				header={header}
 				chainsNumber={selectedChains.length}
 				chainList={chainList}

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import { Panel } from '~/components'
 import { YieldsBorrowTable } from '~/components/Table'
-import { YieldFiltersV2 } from '~/components/Filters'
+import { YieldFilters } from '~/components/Filters'
 import { useFormatYieldQueryParams } from './hooks'
 import { toFilterPool } from './utils'
 
@@ -70,7 +70,7 @@ const YieldPageBorrow = ({ pools, projectList, chainList, categoryList, tokens, 
 
 	return (
 		<>
-			<YieldFiltersV2
+			<YieldFilters
 				header="Yield Rankings"
 				poolsNumber={poolsData.length}
 				projectsNumber={selectedProjects.length}

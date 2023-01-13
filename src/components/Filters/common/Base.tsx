@@ -221,6 +221,10 @@ export const SelectButton = styled(AriaSelect)`
 			background: ${({ theme }) => (theme.mode === 'dark' ? '#22242a' : '#eaeaea')};
 		}
 	}
+
+	& > * > *[data-selecteditems='true'] {
+		color: ${({ theme }) => theme.link};
+	}
 `
 
 export const FilterFnsGroup = styled.span`
