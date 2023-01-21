@@ -122,12 +122,6 @@ const cexData = [
 		walletsLink: 'https://korbit.co.kr/reserve'
 	},
 	{
-		name: 'MaskEX',
-		slug: 'maskex',
-		coin: null,
-		walletsLink: 'https://news.bitcoin.com/a-message-from-maskex/'
-	},
-	{
 		name: 'Coinsquare',
 		slug: 'coinsquare',
 		coin: null,
@@ -159,6 +153,12 @@ const cexData = [
 		slug: 'coindcx',
 		coin: null,
 		walletsLink: 'https://twitter.com/smtgpt/status/1595745395787071497'
+	},
+	{
+		name: 'MaskEX',
+		slug: 'maskex',
+		coin: null,
+		walletsLink: 'https://news.bitcoin.com/a-message-from-maskex/'
 	},
 	{
 		name: 'Cake DeFi',
@@ -296,12 +296,14 @@ export async function getStaticProps() {
 		spot,
 		derivs,
 		{
-			bitcoin: { usd: btcPrice }
+			coins: {
+				'coingecko:bitcoin': { price: btcPrice }
+			}
 		}
 	] = await Promise.all([
 		fetch(`https://api.coingecko.com/api/v3/exchanges?per_page=250`).then((r) => r.json()),
 		fetch(`https://api.coingecko.com/api/v3/derivatives/exchanges?per_page=1000`).then((r) => r.json()),
-		fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd`).then((r) => r.json())
+		fetch(`https://coins.llama.fi/prices/current/coingecko:bitcoin`).then((r) => r.json())
 	])
 	const cexs = await Promise.all(
 		cexData.map(async (c) => {

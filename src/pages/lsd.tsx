@@ -44,7 +44,7 @@ const ChartsWrapper = styled(Panel)`
 		grid-template-columns: 1fr 1fr;
 	}
 `
-const PageView = ({ chartData, lsdColors, lsdTokens, coins, ethPrice }) => {
+const PageView = ({ chartData, lsdColors, lsdRates, chainMcaps, nameGeckoMapping, lsdApy }) => {
 	const historicData = chartData
 		.map((protocol) => {
 			const tokensArray = protocol.chainTvls['Ethereum'].tokens
@@ -100,16 +100,39 @@ const PageView = ({ chartData, lsdColors, lsdTokens, coins, ethPrice }) => {
 		}
 	}
 	const { pieChartData, tokensList, tokens, stakedEthSum, stakedEthInUsdSum } = React.useMemo(() => {
-		let tokenTvls = chartData
+		const roundDate = (date) => Math.floor(date / 24 / 60 / 60) * 60 * 60 * 24
+		const secDay = 86400
+		const tokenTvls = chartData
 			.map((protocol) => {
 				const p = protocol.chainTvls['Ethereum']
+				const lastDate = p.tokens.slice(-1)[0].date
+
+				const offset7d = roundDate(lastDate - 7 * secDay)
+				const offset30d = roundDate(lastDate - 30 * secDay)
+
 				const lastTokens = p.tokens.slice(-1)[0].tokens
 				const lastTokensInUsd = p.tokensInUsd.slice(-1)[0].tokens
 
+				const lastTokens7d = p.tokens.find((x) => x.date === offset7d)?.tokens
+				const lastTokens30d = p.tokens.find((x) => x.date === offset30d)?.tokens
+
+				const eth = lastTokens[Object.keys(lastTokens).filter((k) => k.includes('ETH'))[0]]
+				const eth7d =
+					lastTokens7d !== undefined
+						? lastTokens7d[Object.keys(lastTokens7d)?.filter((k) => k.includes('ETH'))[0]]
+						: null
+				const eth30d =
+					lastTokens30d !== undefined
+						? lastTokens30d[Object.keys(lastTokens30d)?.filter((k) => k.includes('ETH'))[0]]
+						: null
+
 				return {
 					name: protocol.name,
-					stakedEth: lastTokens[Object.keys(lastTokens).filter((k) => k.includes('ETH'))[0]],
-					stakedEthInUsd: lastTokensInUsd[Object.keys(lastTokensInUsd).filter((k) => k.includes('ETH'))[0]]
+					logo: protocol.logo,
+					stakedEth: eth,
+					stakedEthInUsd: lastTokensInUsd[Object.keys(lastTokensInUsd).filter((k) => k.includes('ETH'))[0]],
+					stakedEthPctChange7d: eth7d !== null ? ((eth - eth7d) / eth7d) * 100 : null,
+					stakedEthPctChange30d: eth30d !== null ? ((eth - eth30d) / eth30d) * 100 : null
 				}
 			})
 			.filter((p) => p.stakedEth !== undefined)
@@ -118,13 +141,34 @@ const PageView = ({ chartData, lsdColors, lsdTokens, coins, ethPrice }) => {
 		const stakedEthSum = tokenTvls.reduce((sum, a) => sum + a.stakedEth, 0)
 		const stakedEthInUsdSum = tokenTvls.reduce((sum, a) => sum + a.stakedEthInUsd, 0)
 		const tokensList = tokenTvls.map((p) => {
-			const lsd = coins[`ethereum:${lsdTokens[p.name]}`]
+			const priceInfo = lsdRates.marketRates?.find(
+				(i) => i.fromToken?.address?.toLowerCase() === lsdRates.expectedRates.find((r) => r.name === p.name)?.address
+			)
+			const expectedInfo = lsdRates.expectedRates.find((r) => r.name === p.name)
+
+			const marketRate = priceInfo?.toTokenAmount / 10 ** priceInfo?.fromToken?.decimals
+			const expectedRate = expectedInfo?.expectedRate
+
+			const ethPeg = (marketRate / expectedRate - 1) * 100
+			const pegInfo = expectedInfo?.peg
+
+			const lsdSymbol =
+				priceInfo?.fromToken?.symbol ?? (p.name === 'StakeWise' ? 'sETH2' : p.name === 'StakeHound' ? 'stETH' : null)
+
+			const mcap = chainMcaps[nameGeckoMapping[p.name]]?.usd_market_cap
+			const mcaptvl = mcap / p.stakedEthInUsd
+
 			return {
 				...p,
 				marketShare: (p.stakedEth / stakedEthSum) * 100,
-				lsdPrice: lsd?.price ?? null,
-				lsdSymbol: lsd?.symbol,
-				lsdDelta: lsd?.price ? ((lsd?.price - ethPrice) / ethPrice) * 100 : null
+				lsdSymbol,
+				ethPeg: p.name === 'SharedStake' ? null : ethPeg ?? null,
+				pegInfo,
+				marketRate,
+				expectedRate,
+				mcap,
+				mcapOverTvl: mcaptvl ? mcaptvl.toFixed(2) : null,
+				apy: lsdApy.find((m) => m.name === p.name)?.apy
 			}
 		})
 
@@ -133,7 +177,7 @@ const PageView = ({ chartData, lsdColors, lsdTokens, coins, ethPrice }) => {
 		const tokens = tokensList.map((p) => p.name)
 
 		return { pieChartData, tokensList, tokens, stakedEthSum, stakedEthInUsdSum }
-	}, [chartData, lsdTokens, coins, ethPrice])
+	}, [chartData, lsdRates, chainMcaps, nameGeckoMapping, lsdApy])
 
 	return (
 		<>

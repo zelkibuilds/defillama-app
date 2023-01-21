@@ -650,7 +650,8 @@ export const LSDColumn: ColumnDef<ILSDRow>[] = [
 
 			return (
 				<Name>
-					<span>{index + 1}</span> <CustomLink href={`/protocol/${nameSlug}`}>{getValue()}</CustomLink>
+					<span>{index + 1}</span> <TokenLogo logo={row.original.logo} data-lgonly />
+					<CustomLink href={`/protocol/${nameSlug}`}>{getValue()}</CustomLink>
 				</Name>
 			)
 		},
@@ -662,7 +663,8 @@ export const LSDColumn: ColumnDef<ILSDRow>[] = [
 		cell: ({ getValue }) => <>{formattedNum(getValue())}</>,
 		meta: {
 			align: 'end'
-		}
+		},
+		size: 110
 	},
 	{
 		header: 'TVL',
@@ -670,7 +672,26 @@ export const LSDColumn: ColumnDef<ILSDRow>[] = [
 		cell: ({ getValue }) => <>{'$' + formattedNum(getValue())}</>,
 		meta: {
 			align: 'end'
-		}
+		},
+		size: 110
+	},
+	{
+		header: '7d Change',
+		accessorKey: 'stakedEthPctChange7d',
+		cell: ({ getValue }) => <>{formattedPercent(getValue())}</>,
+		meta: {
+			align: 'end'
+		},
+		size: 110
+	},
+	{
+		header: '30d Change',
+		accessorKey: 'stakedEthPctChange30d',
+		cell: ({ getValue }) => <>{formattedPercent(getValue())}</>,
+		meta: {
+			align: 'end'
+		},
+		size: 110
 	},
 	{
 		header: 'Market Share',
@@ -687,30 +708,78 @@ export const LSDColumn: ColumnDef<ILSDRow>[] = [
 	{
 		header: 'LSD',
 		accessorKey: 'lsdSymbol',
-		cell: ({ getValue }) => <>{getValue()}</>,
+		cell: ({ getValue, row }) => {
+			return (
+				<AutoRow sx={{ width: '100%', justifyContent: 'flex-end', gap: '4px' }}>
+					{row.original.pegInfo ? <QuestionHelper text={row.original.pegInfo} /> : null}
+					{getValue()}
+				</AutoRow>
+			)
+		},
 		meta: {
 			align: 'end'
 		},
 		size: 100
 	},
 	{
-		header: 'Price',
-		accessorKey: 'lsdPrice',
-		cell: ({ getValue }) => <>{getValue() ? '$' + formattedNum(getValue()) : null}</>,
+		header: 'ETH Peg',
+		accessorKey: 'ethPeg',
+		cell: ({ getValue, row }) => {
+			const TooltipContent = () => {
+				return (
+					<>
+						<span>{`Market Rate: ${row.original?.marketRate?.toFixed(4)}`}</span>
+						<span>{`Expected Rate: ${row.original?.expectedRate?.toFixed(4)}`}</span>
+					</>
+				)
+			}
+			return (
+				<AutoRow sx={{ width: '100%', justifyContent: 'flex-end', gap: '4px' }}>
+					<Tooltip content={<TooltipContent />}>{getValue() ? formattedPercent(getValue()) : null}</Tooltip>
+				</AutoRow>
+			)
+		},
+		meta: {
+			align: 'end',
+			headerHelperText:
+				'Market Rate (pulled from 1inch) divided by Expected Rate. Hover for Market Rate and Expected Rate Info.'
+		},
+		size: 115
+	},
+	{
+		header: 'Mcap/TVL',
+		accessorKey: 'mcapOverTvl',
+		cell: ({ getValue, row }) => {
+			const TooltipContent = () => {
+				return (
+					<>
+						<span>{`Market Cap: $${toK(row.original?.mcap)}`}</span>
+					</>
+				)
+			}
+			return (
+				<AutoRow sx={{ width: '100%', justifyContent: 'flex-end', gap: '4px' }}>
+					<Tooltip content={<TooltipContent />}>{getValue() ? getValue() : null}</Tooltip>
+				</AutoRow>
+			)
+		},
 		meta: {
 			align: 'end'
 		},
 		size: 100
+	},
+	{
+		header: 'LSD APR',
+		accessorKey: 'apy',
+		cell: ({ getValue }) => {
+			const value = getValue() as number
+			return <>{value && value.toFixed(2) + '%'}</>
+		},
+		meta: {
+			align: 'end'
+		},
+		size: 90
 	}
-	// {
-	// 	header: 'ETH Peg',
-	// 	accessorKey: 'lsdDelta',
-	// 	cell: ({ getValue }) => <>{formattedPercent(getValue())}</>,
-	// 	meta: {
-	// 		align: 'end'
-	// 	},
-	// 	size: 100
-	// }
 ]
 
 function formatCexInflows(value) {
@@ -809,3 +878,9 @@ export const raisesColumnOrders = formatColumnOrder({
 		'otherInvestors'
 	]
 })
+
+const Tooltip = styled(Tooltip2)`
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+`

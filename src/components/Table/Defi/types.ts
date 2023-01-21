@@ -37,4 +37,10 @@ export interface ILSDRow {
 	stakedEth: number
 	tvl: number
 	marketShare: number
+	ethPeg: number
+	pegInfo: string
+	marketRate: number
+	expectedRate: number
+	logo: string
+	mcap: number
 }

@@ -137,7 +137,8 @@ export const navLinks: ILinks = {
 	Yields: {
 		main: [
 			{ name: 'Pools', path: '/yields' },
-			{ name: 'Delta Neutral', path: '/yields/strategy', newTag: true },
+			{ name: 'Delta Neutral', path: '/yields/strategy' },
+			{ name: 'Long-Short Strats', path: '/yields/strategyLongShort', newTag: true },
 			{ name: 'Leveraged Lending', path: '/yields/loop' },
 			{ name: 'Borrow', path: '/yields/borrow' },
 			{ name: 'Overview', path: '/yields/overview' },
@@ -262,7 +263,7 @@ export const linksWithNoSubMenu = [
 	{ name: 'Hacks', url: '/hacks' },
 	{ name: 'Borrow Aggregator', url: '/borrow' },
 	{ name: 'CEX Transparency', url: '/cexs' },
-	{ name: 'DEX Meta-Aggregator', url: 'https://swap.defillama.com/' },
+	{ name: 'DEX Meta-Aggregator', url: 'https://swap.defillama.com/', external: true },
 	{ name: 'ETH Liquid Staking', url: '/lsd' }
 ]
 
