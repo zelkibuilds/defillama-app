@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Table, flexRender, RowData } from '@tanstack/react-table'
-import { defaultRangeExtractor, useWindowVirtualizer } from '@tanstack/react-virtual'
+import { useWindowVirtualizer } from '@tanstack/react-virtual'
 import styled from 'styled-components'
 import SortIcon from './SortIcon'
 import QuestionHelper from '../QuestionHelper'
@@ -26,16 +26,7 @@ export default function VirtualTable({
 	rowSize,
 	...props
 }: ITableProps) {
-	const [tableTop, setTableTop] = React.useState(0)
-	const tableContainerRef = React.useRef<HTMLTableSectionElement>(null)
-
 	const { rows } = instance.getRowModel()
-
-	React.useEffect(() => {
-		if (tableContainerRef?.current) {
-			setTableTop(tableContainerRef.current.offsetTop)
-		}
-	}, [])
 
 	const rowVirtualizer = useWindowVirtualizer({
 		count: rows.length,
@@ -51,7 +42,7 @@ export default function VirtualTable({
 		virtualItems.length > 0 ? rowVirtualizer.getTotalSize() - (virtualItems?.[virtualItems.length - 1]?.end || 0) : 0
 
 	return (
-		<Wrapper ref={tableContainerRef} data-resizable={columnResizeMode ? true : false} {...props}>
+		<Wrapper data-resizable={columnResizeMode ? true : false} {...props}>
 			<table>
 				<thead>
 					{instance.getHeaderGroups().map((headerGroup) => (
@@ -139,7 +130,7 @@ export default function VirtualTable({
 const Wrapper = styled.div`
 	position: relative;
 	width: 100%;
-	max-width: calc(100vw - 32px);
+	max-width: calc(100vw - 38px);
 	color: ${({ theme }) => theme.text1};
 	background-color: ${({ theme }) => theme.background};
 	border: 1px solid ${({ theme }) => theme.bg3};
@@ -198,7 +189,7 @@ const Wrapper = styled.div`
 	}
 
 	@media screen and (min-width: ${({ theme }) => theme.bpLg}) {
-		max-width: calc(100vw - 276px);
+		max-width: calc(100vw - 276px - var(--table-width-offset, 0px));
 	}
 `
 

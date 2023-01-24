@@ -57,7 +57,7 @@ export function ChainLayout({ chainsList, selectedChain, children }: IChainLayou
 }
 
 const AnnouncementWrapper = styled(Announcement)`
-	margin: -28px 0 -10px;
+	margin: -20px 0 0px;
 
 	@media screen and (max-width: ${({ theme }) => theme.bpLg}) {
 		display: none;

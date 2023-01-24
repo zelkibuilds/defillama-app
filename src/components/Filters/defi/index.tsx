@@ -51,8 +51,10 @@ const Wrapper = styled.div`
 	gap: 16px;
 	padding: 16px;
 	background: ${({ theme }) => (theme.mode === 'dark' ? 'rgba(0, 0, 0, 0.6)' : 'rgba(246, 246, 246, 0.6)')};
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
 
-	margin: -8px 0 -24px;
+	margin: -8px 0 -28px;
 
 	@media screen and (min-width: 80rem) {
 		margin: -20px 0 -28px;

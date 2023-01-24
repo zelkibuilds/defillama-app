@@ -199,7 +199,7 @@ export function ChainTVL({ chainsList, selectedChain, chart, extraTvlCharts, pro
 				/>
 			</ChartContainer>
 
-			<Wrapper>{finalProtocolTotals.length > 0 && <ProtocolsTable data={finalProtocolTotals} />}</Wrapper>
+			{finalProtocolTotals.length > 0 && <Wrapper data={finalProtocolTotals} />}
 		</ChainLayout>
 	)
 }
@@ -214,9 +214,10 @@ const Stats = styled(StatsWrapper)`
 	}
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled(ProtocolsTable)`
 	width: 100%;
-	margin-top: -48px;
+	margin-top: -24px;
+	--table-width-offset: 48px;
 
 	th,
 	td,
@@ -231,7 +232,8 @@ const Wrapper = styled.div`
 		border: none;
 	}
 
-	@media screen and (max-width: 80rem) {
-		margin-top: -24px;
+	@media screen and (min-width: 80rem) {
+		margin-top: -48px;
+		--table-width-offset: 82px;
 	}
 `
