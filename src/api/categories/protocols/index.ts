@@ -166,7 +166,9 @@ const getExtraTvlCharts = (data) => {
 // - used in / and /[chain]
 export async function getChainPageData(chain?: string) {
 	const [chartData, { protocols, chains, parentProtocols }] = await Promise.all(
-		[CHART_API + (chain ? '/' + chain : ''), PROTOCOLS_API].map((url) => fetch(url).then((r) => r.json()))
+		[CHART_API + (chain && chain.toLowerCase() !== 'all' ? '/' + chain : ''), PROTOCOLS_API].map((url) =>
+			fetch(url).then((r) => r.json())
+		)
 	)
 
 	const filteredProtocols = formatProtocolsData({

@@ -1,11 +1,11 @@
 import Layout from '~/layout'
 import { maxAgeForNext } from '~/api'
-import { getPeggedOverviewPageData } from '~/api/categories/stablecoins'
+import { getPeggedAssets, getPeggedOverviewPageData } from '~/api/categories/stablecoins'
 import { chainIconUrl } from '~/utils'
 import { ChainStablecoins } from '~/containers/Chain/Stablecoins'
 
-export async function getStaticProps() {
-	const data = await getPeggedOverviewPageData(null)
+export async function getStaticProps({ params }) {
+	const data = await getPeggedOverviewPageData(params.chain === 'All' ? null : params.chain)
 
 	if (!data.filteredPeggedAssets || data.filteredPeggedAssets?.length === 0) {
 		return {
@@ -29,10 +29,20 @@ export async function getStaticProps() {
 	}
 }
 
-export default function PeggedAssets(props) {
+export async function getStaticPaths() {
+	const { chains } = await getPeggedAssets()
+
+	const paths = [{ name: 'All' }].concat(chains.slice(0, 20)).map((chain) => ({
+		params: { chain: chain.name }
+	}))
+
+	return { paths: paths, fallback: 'blocking' }
+}
+
+export default function Chain({ chain, ...props }) {
 	return (
-		<Layout title={`Stablecoins Circulating - DefiLlama`} defaultSEO>
-			<ChainStablecoins {...props} selectedChain="All" />
+		<Layout title={`${chain} TVL - DefiLlama`}>
+			<ChainStablecoins {...props} selectedChain={chain} />
 		</Layout>
 	)
 }

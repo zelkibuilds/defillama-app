@@ -217,6 +217,7 @@ const Stats = styled(StatsWrapper)`
 const Wrapper = styled(ProtocolsTable)`
 	width: 100%;
 	margin-top: -24px;
+	border: none;
 	--table-width-offset: 48px;
 
 	th,
@@ -226,10 +227,6 @@ const Wrapper = styled(ProtocolsTable)`
 	tbody,
 	thead {
 		background: ${({ theme }) => (theme.mode === 'dark' ? 'black' : 'white')};
-	}
-
-	& > * {
-		border: none;
 	}
 
 	@media screen and (min-width: 80rem) {

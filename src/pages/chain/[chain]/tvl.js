@@ -6,8 +6,7 @@ import { getChainPageData } from '~/api/categories/protocols'
 import { chainIconUrl } from '~/utils'
 
 export async function getStaticProps({ params }) {
-	const chain = params.chain
-	const { props: data } = await getChainPageData(chain)
+	const { props: data } = await getChainPageData(params.chain)
 
 	const setSelectedChain = (newSelectedChain) => (newSelectedChain === 'All' ? '/' : `/chain/${newSelectedChain}`)
 
@@ -26,13 +25,13 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-	const res = await fetch(PROTOCOLS_API)
+	const res = await fetch(PROTOCOLS_API).then((r) => r.json())
 
-	const paths = (await res.json()).chains.slice(0, 20).map((chain) => ({
+	const paths = res.chains.slice(0, 20).map((chain) => ({
 		params: { chain }
 	}))
 
-	return { paths, fallback: 'blocking' }
+	return { paths: [], fallback: 'blocking' }
 }
 
 export default function Chain({ chain, ...props }) {

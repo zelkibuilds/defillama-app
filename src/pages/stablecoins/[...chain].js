@@ -1,33 +1,34 @@
 import Layout from '~/layout'
-import PeggedList from '~/components/PeggedPage/PeggedList'
-import { getColor } from '~/utils/getColor'
 import { maxAgeForNext } from '~/api'
 import { getPeggedAssets, getPeggedOverviewPageData } from '~/api/categories/stablecoins'
-import { primaryColor } from '~/constants/colors'
-import { peggedAssetIconPalleteUrl } from '~/utils'
+import { chainIconUrl } from '~/utils'
+import { ChainStablecoins } from '~/containers/Chain/Stablecoins'
 
 export async function getStaticProps({
 	params: {
 		chain: [chain]
 	}
 }) {
-	const props = await getPeggedOverviewPageData(chain)
+	const data = await getPeggedOverviewPageData(chain === 'All' ? null : chain)
 
-	if (!props.filteredPeggedAssets || props.filteredPeggedAssets?.length === 0) {
+	if (!data.filteredPeggedAssets || data.filteredPeggedAssets?.length === 0) {
 		return {
 			notFound: true
 		}
 	}
 
-	const name = props.filteredPeggedAssets[0]?.name
+	const setSelectedChain = (newSelectedChain) => `/chain/${newSelectedChain}/stablecoins`
 
-	const backgroundColor = name ? await getColor(peggedAssetIconPalleteUrl(name)) : primaryColor
+	let chainsList = ['All'].concat(data.chains).map((name) => ({
+		name,
+		label: name,
+		to: setSelectedChain(name),
+		route: setSelectedChain(name),
+		logo: chainIconUrl(name)
+	}))
 
 	return {
-		props: {
-			...props,
-			backgroundColor
-		},
+		props: { ...data, chainsList, selectedChain: chain },
 		revalidate: maxAgeForNext([22])
 	}
 }
@@ -42,28 +43,10 @@ export async function getStaticPaths() {
 	return { paths: paths.slice(0, 11), fallback: 'blocking' }
 }
 
-export default function PeggedAssets({
-	chains,
-	filteredPeggedAssets,
-	peggedAssetNames,
-	peggedNameToChartDataIndex,
-	chartDataByPeggedAsset,
-	chainTVLData,
-	chain,
-	backgroundColor
-}) {
+export default function PeggedAssets(props) {
 	return (
 		<Layout title={`Stablecoins Circulating - DefiLlama`} defaultSEO>
-			<PeggedList
-				chains={chains}
-				selectedChain={chain}
-				filteredPeggedAssets={filteredPeggedAssets}
-				peggedAssetNames={peggedAssetNames}
-				peggedNameToChartDataIndex={peggedNameToChartDataIndex}
-				chartDataByPeggedAsset={chartDataByPeggedAsset}
-				chainTVLData={chainTVLData}
-				backgroundColor={backgroundColor}
-			/>
+			<ChainStablecoins {...props} />
 		</Layout>
 	)
 }

@@ -41,13 +41,30 @@ export function ChainLayout({ chainsList, selectedChain, children }: IChainLayou
 
 			<DashboardLinks>
 				<Link href={`/chain/${selectedChain}/tvl`} passHref>
-					<DashboardLink active={router.pathname === '/'}>Total Value Locked</DashboardLink>
+					<DashboardLink
+						active={
+							router.pathname === '/' ||
+							router.pathname === '/chain/[chain]' ||
+							router.pathname === '/chain/[chain]/tvl'
+						}
+					>
+						Total Value Locked
+					</DashboardLink>
 				</Link>
 				<Link href={`/chain/${selectedChain}/stablecoins`} passHref>
-					<DashboardLink>Stablecoins</DashboardLink>
+					<DashboardLink
+						active={
+							router.pathname === '/stablecoins' ||
+							router.pathname === '/stablecoins/[...chain]' ||
+							router.pathname === '/stablecoins/[chain]' ||
+							router.pathname === '/chain/[chain]/stablecoins'
+						}
+					>
+						Stablecoins
+					</DashboardLink>
 				</Link>
 				<Link href={`/chain/${selectedChain}/volume`} passHref>
-					<DashboardLink>Volume</DashboardLink>
+					<DashboardLink active={router.pathname === '/chain/[chain]/volume'}>Volume</DashboardLink>
 				</Link>
 			</DashboardLinks>
 
@@ -101,16 +118,13 @@ const DashboardLink = styled.a<IDashboardLink>`
 	padding: 8px 24px;
 	white-space: nowrap;
 	font-weight: 500;
+	border-radius: 0px;
 
 	& + & {
 		border-left: ${({ theme }) => '1px solid ' + theme.divider};
 	}
 
 	border-bottom: ${({ active, theme }) => '1px solid ' + (active ? primaryColor : theme.divider)};
-
-	:first-child {
-		border-top-left-radius: 12px;
-	}
 
 	:hover,
 	:focus-visible {
