@@ -44,7 +44,7 @@ function AboutPage() {
 					<Divider />
 					<TYPE.main>
 						Contact us on <Link href="https://twitter.com/llamadotfi">Twitter</Link> or{' '}
-						<Link href="https://discord.llama.fi">Discord</Link>
+						<Link href="https://discord.defillama.com">Discord</Link>
 					</TYPE.main>
 				</DashGrid>
 			</Panel>
