@@ -120,7 +120,7 @@ const SEO = ({
 				property="og:description"
 				content="Llama.Fi is a DeFi TVL aggregator. It is committed to providing accurate data without ads or sponsored content, as well as transparency."
 			/>
-			<meta property="og:image" content={cardURL} />
+			{/* <meta property="og:image" content={cardURL} /> */}
 
 			<meta name="twitter:card" content="summary_large_image" />
 			<meta property="twitter:domain" content="llamadotfi" />
