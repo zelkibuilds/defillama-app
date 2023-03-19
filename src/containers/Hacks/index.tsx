@@ -95,7 +95,7 @@ const HacksContainer = ({ data, monthlyHacks, totalHacked, totalHackedDefi, tota
 	const [chartType, setChartType] = React.useState('Total Value Hacked')
 	const chartTypeList = ['Total Value Hacked', 'Pie']
 	return (
-		<Layout title={`Hacks - DefiLlama`} defaultSEO>
+		<Layout title={`Hacks - Llama.Fi`} defaultSEO>
 			<ChartAndValuesWrapper>
 				<BreakpointPanels>
 					<BreakpointPanel>

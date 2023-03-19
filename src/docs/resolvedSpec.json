@@ -1,9 +1,9 @@
 {
 	"openapi": "3.0.0",
 	"info": {
-		"description": "Docs for defillama's open API\n",
+		"description": "Docs for Llama.Fi's open API\n",
 		"version": "1.0.0-oas3",
-		"title": "DefiLlama API"
+		"title": "Llama.Fi API"
 	},
 	"tags": [
 		{
@@ -12,7 +12,7 @@
 		},
 		{
 			"name": "coins",
-			"description": "General blockchain data used by defillama and open-sourced"
+			"description": "General blockchain data used by Llama.Fi and open-sourced"
 		},
 		{
 			"name": "stablecoins",
@@ -48,7 +48,7 @@
 		"/protocols": {
 			"get": {
 				"tags": ["TVL"],
-				"summary": "List all protocols on defillama along with their tvl",
+				"summary": "List all protocols on Llama.Fi along with their tvl",
 				"responses": {
 					"200": {
 						"description": "successful operation"

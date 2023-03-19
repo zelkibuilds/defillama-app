@@ -19,7 +19,7 @@ export async function getStaticProps() {
 
 export default function NFTHomePage(props) {
 	return (
-		<Layout title="NFTs - DefiLlama" defaultSEO>
+		<Layout title="NFTs - Llama.Fi" defaultSEO>
 			<Header>NFT Collections</Header>
 
 			<NftsCollectionTable data={props.collections || []} />

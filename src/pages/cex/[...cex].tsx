@@ -55,7 +55,7 @@ export default function Protocols({ protocolData, ...props }) {
 		return (
 			<DummyProtocol
 				data={protocolData}
-				title={`${protocolData.name} - DefiLlama`}
+				title={`${protocolData.name} - Llama.Fi`}
 				backgroundColor={props.backgroundColor}
 				protocol={props.protocol}
 			/>
@@ -64,7 +64,7 @@ export default function Protocols({ protocolData, ...props }) {
 
 	return (
 		<ProtocolContainer
-			title={`${protocolData.name} - DefiLlama`}
+			title={`${protocolData.name} - Llama.Fi`}
 			protocolData={protocolData}
 			{...(props as any)}
 			isCEX

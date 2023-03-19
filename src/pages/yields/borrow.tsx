@@ -33,7 +33,7 @@ export async function getStaticProps() {
 
 export default function YieldBorrow(data) {
 	return (
-		<Layout title={`Lend/Borrow rates - DefiLlama Yield`} defaultSEO>
+		<Layout title={`Lend/Borrow rates - Llama.Fi Yield`} defaultSEO>
 			<Announcement>{disclaimer}</Announcement>
 			<YieldPageBorrow {...data} />
 		</Layout>

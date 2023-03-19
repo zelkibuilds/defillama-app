@@ -18,7 +18,7 @@ export async function getStaticProps({
 			collection,
 			chart,
 			statistics,
-			title: collection ? `${collection.name} - DefiLlama` : `DefiLlama - NFT Dashboard`,
+			title: collection ? `${collection.name} - Llama.Fi` : `NFTs - Llama.Fi`,
 			backgroundColor: primaryColor
 		},
 		revalidate: maxAgeForNext([22])

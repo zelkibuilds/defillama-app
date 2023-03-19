@@ -90,7 +90,7 @@ export default function TrendingContracts() {
 	})
 
 	return (
-		<Layout title={`Trending Contracts - DefiLlama`} defaultSEO>
+		<Layout title={`Trending Contracts - Llama.Fi`} defaultSEO>
 			<ProtocolsChainsSearch step={{ category: 'Home', name: 'Trending Contracts', hideOptions: true }} />
 
 			<TableFilters>

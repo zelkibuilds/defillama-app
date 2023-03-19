@@ -242,7 +242,7 @@ const formatPriceSource = {
 	coingecko: 'CoinGecko',
 	birdeye: 'Birdeye',
 	kucoin: 'KuCoin Exchange',
-	defillama: 'DefiLlama',
+	llamadotfi: 'Llama.Fi',
 	kaddex: 'Kaddex'
 }
 

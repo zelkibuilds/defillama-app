@@ -34,7 +34,7 @@ export async function getStaticProps() {
 
 export default function ApyHomePage(data) {
 	return (
-		<Layout title={`Yield Rankings - DefiLlama`} defaultSEO>
+		<Layout title={`Yield Rankings - Llama.Fi`} defaultSEO>
 			<Announcement>{disclaimer}</Announcement>
 			<YieldPage {...data} />
 		</Layout>

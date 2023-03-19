@@ -6,7 +6,7 @@ import { useIsClient } from '~/hooks'
 import { useRouter } from 'next/router'
 import { ISettings, IWatchlist, TUpdater } from './types'
 
-const DEFILLAMA = 'DEFILLAMA'
+const LLAMADOTFI = 'LLAMADOTFI'
 export const DARK_MODE = 'DARK_MODE'
 
 // DEFI
@@ -178,7 +178,7 @@ function init() {
 	}
 
 	try {
-		const parsed = JSON.parse(window.localStorage.getItem(DEFILLAMA))
+		const parsed = JSON.parse(window.localStorage.getItem(LLAMADOTFI))
 		if (!parsed) {
 			return defaultLocalStorage
 		} else {
@@ -234,7 +234,7 @@ export function Updater() {
 	const [state] = useLocalStorageContext()
 
 	useEffect(() => {
-		window.localStorage.setItem(DEFILLAMA, JSON.stringify(state))
+		window.localStorage.setItem(LLAMADOTFI, JSON.stringify(state))
 	})
 
 	return null

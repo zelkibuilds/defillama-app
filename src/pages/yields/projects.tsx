@@ -53,7 +53,7 @@ export async function getStaticProps() {
 
 export default function Protocols({ projects }) {
 	return (
-		<Layout title={`Projects - DefiLlama Yield`} defaultSEO>
+		<Layout title={`Projects - Llama.Fi Yield`} defaultSEO>
 			<Announcement>{disclaimer}</Announcement>
 
 			<PageHeader title="Projects" />

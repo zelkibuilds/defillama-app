@@ -78,16 +78,7 @@ export default function Chains({ messages }: { messages?: string }) {
 			.trim() ?? ''
 
 	return (
-		<Layout title={`Daily Roundup - DefiLlama`} defaultSEO>
-			<Announcement notCancellable>
-				Get the roundup delivered every day for free by subscribing on{' '}
-				<Link href="https://t.me/defillama_tg" passHref>
-					<a target="_blank" rel="noopener noreferrer">
-						Telegram
-					</a>
-				</Link>
-			</Announcement>
-
+		<Layout title={`Daily Roundup - Llama.Fi`} defaultSEO>
 			<Header>Daily news roundup with the 🦙</Header>
 
 			<Text>

@@ -33,7 +33,7 @@ export async function getStaticPaths() {
 
 export default function Protocols({ emissions, name }) {
 	return (
-		<Layout title={`${name} Emissions - DefiLlama`} style={{ gap: '36px' }} defaultSEO>
+		<Layout title={`${name} Emissions - Llama.Fi`} style={{ gap: '36px' }} defaultSEO>
 			<Wrapper>
 				<Name>{name + ' ' + 'Emissions'}</Name>
 				<Emissions data={emissions} isEmissionsPage />

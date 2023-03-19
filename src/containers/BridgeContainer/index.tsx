@@ -187,7 +187,7 @@ export default function BridgeContainer({
 
 	return (
 		<Layout
-			title={`${displayName}: Bridge Volume - DefiLlama`}
+			title={`${displayName}: Bridge Volume - Llama.Fi`}
 			// backgroundColor={transparentize(0.6, backgroundColor)}
 			style={{ gap: '48px' }}
 		>

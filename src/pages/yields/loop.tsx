@@ -64,7 +64,7 @@ export default function YieldBorrow(data) {
 	const [methodologyActivated, setMethodologyActivated] = useState(false)
 
 	return (
-		<Layout title={`Lend/Borrow rates - DefiLlama Yield`} defaultSEO>
+		<Layout title={`Lend/Borrow rates - Llama.Fi Yield`} defaultSEO>
 			<Announcement>{disclaimer}</Announcement>
 
 			<PanelThicc as="p" style={{ whiteSpace: 'pre-line', display: 'block' }}>

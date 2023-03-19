@@ -1,6 +1,6 @@
-# DefiLlama
+# Llama.Fi
 
-Check it out live: [https://defillama.com](https://defillama.com).
+Check it out live: [https://llama.fi](https://llama.fi).
 
 ### To Start Development
 
@@ -17,10 +17,10 @@ yarn dev
 ```
 
 ### Updating API docs
+
 1. Get the API spec in /docs/spec.yaml and paste it into https://editor.swagger.io/
 2. Modify it
 3. Generate a json file by clicking "File" -> "Convert and save as JSON"
 4. Copy the generated json file along with the changed yml spec into this repo
 
 At the end you should have modified `/docs/spec.yaml` and `/docs/resolvedSpec.json`
- 

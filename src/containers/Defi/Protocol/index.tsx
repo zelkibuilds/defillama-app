@@ -58,7 +58,6 @@ import type { IArticle } from '~/api/categories/news'
 import { NewsCard } from '~/components/News/Card'
 import { Emissions } from './Emissions'
 import { RowBetween } from '~/components/Row'
-import { DLNewsLogo } from '~/components/News/Logo'
 import { ProtocolFeesAndRevenueCharts } from './Fees'
 import type { IEmission } from './Emissions'
 
@@ -477,23 +476,6 @@ function ProtocolContainer({
 						)}
 					</LinksWrapper>
 				</Section>
-
-				{articles.length > 0 && (
-					<Section>
-						<RowBetween>
-							<h3>Latest from DL News</h3>
-							<Link href="https://www.dlnews.com" passHref>
-								<a>
-									<DLNewsLogo width={102} height={22} />
-								</a>
-							</Link>
-						</RowBetween>
-
-						{articles.map((article, idx) => (
-							<NewsCard key={`news_card_${idx}`} {...article} color={backgroundColor} />
-						))}
-					</Section>
-				)}
 
 				{(address || protocolData.gecko_id || blockExplorerLink) && (
 					<Section>

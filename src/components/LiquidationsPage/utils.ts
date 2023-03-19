@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars*/
 import { useRouter } from 'next/router'
 import { ChartData, ChartDataBins, getReadableValue, PROTOCOL_NAMES_MAP } from '~/utils/liquidations'
-import logoLight from '~/public/defillama-press-kit/defi/PNG/defillama-light-neutral.png'
-import logoDark from '~/public/defillama-press-kit/defi/PNG/defillama-dark-neutral.png'
+// import logoLight from '~/public/logo.png'
+// import logoDark from '~/public/logo.png'
 import { ECBasicOption } from 'echarts/types/dist/shared'
 
 export const convertChartDataBinsToArray = (obj: ChartDataBins, totalBins: number) => {
@@ -67,15 +67,15 @@ export const getOption = (
 
 	const option: ECBasicOption = {
 		graphic: {
-			type: 'image',
-			z: 0,
-			style: {
-				image: isDark ? logoLight.src : logoDark.src,
-				height: 40,
-				opacity: 0.3
-			},
-			left: isSmall ? '40%' : '45%',
-			top: '130px'
+			// type: 'image',
+			// z: 0,
+			// style: {
+			// 	image: isDark ? logoLight.src : logoDark.src,
+			// 	height: 40,
+			// 	opacity: 0.3
+			// },
+			// left: isSmall ? '40%' : '45%',
+			// top: '130px'
 		},
 		legend: {
 			orient: 'vertical',

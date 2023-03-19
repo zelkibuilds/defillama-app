@@ -37,30 +37,30 @@ export async function getStaticProps() {
 
 function PressPage({ protocols }) {
 	return (
-		<Layout title="Donations - DefiLlama" defaultSEO>
+		<Layout title="Donations - Llama.Fi" defaultSEO>
 			<RowBetween>
 				<TYPE.largeHeader>Donations</TYPE.largeHeader>
 			</RowBetween>
 			<Panel style={{ marginTop: '6px' }}>
 				<DashGrid style={{ height: 'fit-content', padding: '0 0 1rem 0' }}>
 					<Section title="Why donate?">
-						DefiLlama is an open-source project that runs no ads and provides all data for free. We have no revenue and
+						Llama.Fi is an open-source project that runs no ads and provides all data for free. We have no revenue and
 						are supported by donations.
 					</Section>
 
 					<Divider />
 
-					<Section title="Gitcoin">
+					{/* <Section title="Gitcoin">
 						Donations on gitcoin get matched with donations from a quadratic funding pool, so a small 1$ donation can
 						get heavily amplified.
 						<br />
 						<br />
-						DefiLlama has the following grants:
-						<ul>
+						Llama.Fi has the following grants:
+					 <ul>
 							{[
 								['LlamaPay', 'https://gitcoin.co/grants/7077/llamapay'],
-								['DefiLlama', 'https://gitcoin.co/grants/3591/defillama'],
-								['DefiLlama APIs', 'https://gitcoin.co/grants/7087/defillama-apis'],
+								['Llama.Fi', 'https://gitcoin.co/grants/3591/llamadotfi'],
+								['Llama.Fi APIs', 'https://gitcoin.co/grants/7087/llamadotfi-apis'],
 								['Chainlist', 'https://gitcoin.co/grants/7791/chainlist']
 							].map((el) => (
 								<li key={el[0]}>
@@ -69,13 +69,13 @@ function PressPage({ protocols }) {
 									</Link>
 								</li>
 							))}
-						</ul>
+						</ul> 
 					</Section>
 
-					<Divider />
+					<Divider /> */}
 
 					<Section title="Affiliate links">
-						DefiLlama has referral links for all these protocols, using them with our referral sends us some rewards:
+						Llama.Fi has referral links for all these protocols, using them with our referral sends us some rewards:
 						<ul>
 							{protocols.map((p) => (
 								<li key={p.name}>
@@ -99,8 +99,8 @@ function PressPage({ protocols }) {
 					<Section title="Use of funds">
 						Funds are only used for 2 purposes:
 						<ul>
-							<li>Pay the llamas working on DefiLlama</li>
-							<li>Cover costs associated with running defillama (this is mostly server costs)</li>
+							<li>Pay the llamas working on Llama.Fi</li>
+							<li>Cover costs associated with running Llama.Fi (this is mostly server costs)</li>
 						</ul>
 					</Section>
 				</DashGrid>

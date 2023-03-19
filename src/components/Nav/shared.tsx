@@ -34,9 +34,14 @@ export const Header = styled.header`
 `
 
 export const LogoWrapper = styled.a`
+	display: flex;
+	align-items: flex-end;
+	flex-wrap: nowrap;
+	gap: 8px;
 	flex-shrink: 0;
-	transition: transform 0.3s ease;
 	margin-right: auto;
+	font-size: 1.625rem;
+	font-weight: 600;
 
 	:focus-visible {
 		outline: 1px solid white;
@@ -44,18 +49,13 @@ export const LogoWrapper = styled.a`
 
 	img {
 		height: 36px;
-		object-fit: contain;
-		object-position: left;
-		width: min-content;
+		width: 36px;
 	}
 
 	@media screen and (min-width: ${({ theme: { bpLg } }) => bpLg}) {
-		:hover {
-			transform: rotate(-5deg);
-		}
-
 		img {
-			height: 53px;
+			height: 36px;
+			width: 36px;
 		}
 	}
 `

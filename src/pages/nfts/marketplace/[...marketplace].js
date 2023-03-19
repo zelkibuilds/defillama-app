@@ -45,5 +45,5 @@ export async function getStaticPaths() {
 }
 
 export default function Marketplace({ displayName, ...props }) {
-	return <NFTDashboardPage title={`${displayName} Total Volume - DefiLlama`} displayName={displayName} {...props} />
+	return <NFTDashboardPage title={`${displayName} Total Volume - Llama.Fi`} displayName={displayName} {...props} />
 }

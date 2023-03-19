@@ -8,7 +8,7 @@ const useAnalytics = () => {
 	useEffect(() => {
 		if (process.env.NODE_ENV === 'production') {
 			Fathom.load('OANJVQNZ', {
-				includedDomains: ['defillama.com', 'www.defillama.com'],
+				includedDomains: ['llama.fi', 'www.llama.fi'],
 				url: '/script.js'
 			})
 		}

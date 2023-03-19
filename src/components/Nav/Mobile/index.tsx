@@ -4,8 +4,8 @@ import { useRouter } from 'next/router'
 import Image from 'next/future/image'
 import dynamic from 'next/dynamic'
 import styled from 'styled-components'
+import logoLight from '~/public/logo.png'
 import { Header, LogoWrapper } from '../shared'
-import Logo from '~/assets/logo_white_long.png'
 import { Menu } from './Menu'
 import { Settings } from './Settings'
 
@@ -21,8 +21,9 @@ export default function MobileNav() {
 		<Wrapper>
 			<Link href="/" passHref>
 				<LogoWrapper>
-					<span className="visually-hidden">Navigate to Home Page</span>
-					<Image src={Logo} alt="Navigate to Home Page" priority />
+					<Image src={logoLight} alt="=" priority />
+
+					<span>Llama.Fi</span>
 				</LogoWrapper>
 			</Link>
 

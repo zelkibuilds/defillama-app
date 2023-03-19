@@ -97,7 +97,7 @@ export default function Chains({ data, columns }) {
 	})
 
 	return (
-		<Layout title="TVL Rankings - DefiLlama" defaultSEO>
+		<Layout title="TVL Rankings - Llama.Fi" defaultSEO>
 			<TYPE.largeHeader style={{ marginTop: '8px' }}>Top Protocols</TYPE.largeHeader>
 			<Table instance={instance} skipVirtualization />
 		</Layout>

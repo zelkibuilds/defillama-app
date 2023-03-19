@@ -71,19 +71,17 @@ const SEO = ({
 
 		cardSrc.searchParams.append('footerURL', encodeURIComponent(windowURL))
 
-		// First url in images should always be the logo of defillama
-		let images = nftPage
-			? [`https://defillama.com/defillama-press-kit/nft/SVG/defillama-nft.svg`]
-			: [`https://defillama.com/defillama-press-kit/defi/SVG/defillama.svg`]
+		// First url in images should always be the logo of Llama.Fi
+		let images = nftPage ? [`https://llama.fi/logo.png`] : [`https://llama.fi/logo`]
 
 		// chain and token props are used to get logo, if the logo url isn't available in the data of that page
 		if (logo) {
 			images = [...images, logo]
 		} else if (chain && chain !== 'All') {
-			images = [...images, `https://defillama.com${chainIconUrl(chain)}`]
+			images = [...images, `https://llama.fi${chainIconUrl(chain)}`]
 		} else {
 			if (token && token !== 'All') {
-				images = [...images, `https://defillama.com${tokenIconUrl(token)}`]
+				images = [...images, `https://llama.fi${tokenIconUrl(token)}`]
 			}
 		}
 
@@ -111,30 +109,30 @@ const SEO = ({
 		<Head>
 			<meta
 				name="description"
-				content="DefiLlama is a DeFi TVL aggregator. It is committed to providing accurate data without ads or sponsored content, as well as transparency."
+				content="Llama.Fi is a DeFi TVL aggregator. It is committed to providing accurate data without ads or sponsored content, as well as transparency."
 			/>
 
-			<meta property="og:title" content="DefiLlama" />
+			<meta property="og:title" content="Llama.Fi" />
 			<meta property="og:type" content="website" />
 			<meta property="og:url" content={windowURL} />
-			<meta property="og:site_name" content="DefiLlama" />
+			<meta property="og:site_name" content="Llama.Fi" />
 			<meta
 				property="og:description"
-				content="DefiLlama is a DeFi TVL aggregator. It is committed to providing accurate data without ads or sponsored content, as well as transparency."
+				content="Llama.Fi is a DeFi TVL aggregator. It is committed to providing accurate data without ads or sponsored content, as well as transparency."
 			/>
 			<meta property="og:image" content={cardURL} />
 
 			<meta name="twitter:card" content="summary_large_image" />
-			<meta property="twitter:domain" content="defillama.com" />
+			<meta property="twitter:domain" content="llamadotfi" />
 			<meta property="twitter:url" content={windowURL} />
-			<meta name="twitter:title" content="DefiLlama" />
-			<meta name="twitter:site" content="@DefiLlama" />
-			<meta name="twitter:creator" content="@DefiLlama" />
+			<meta name="twitter:title" content="Llama.Fi" />
+			<meta name="twitter:site" content="@llamadotfi" />
+			<meta name="twitter:creator" content="@llamadotfi" />
 			<meta
 				name="twitter:description"
-				content="DefiLlama is a DeFi TVL aggregator. It is committed to providing accurate data without ads or sponsored content, as well as transparency."
+				content="Llama.Fi is a DeFi TVL aggregator. It is committed to providing accurate data without ads or sponsored content, as well as transparency."
 			/>
-			<meta name="twitter:image" content={cardURL} />
+			{/* <meta name="twitter:image" content={cardURL} /> */}
 		</Head>
 	)
 }

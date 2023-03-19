@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export default function Protocols() {
 	return (
-		<Layout title={`Reports - DefiLlama`} defaultSEO>
+		<Layout title={`Reports - Llama.Fi`} defaultSEO>
 			<Header style={{ textAlign: 'center' }}>Reports</Header>
 			<List>
 				<li>

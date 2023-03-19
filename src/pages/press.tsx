@@ -74,16 +74,16 @@ const PanelWrapper = styled(Box)`
 
 function PressPage() {
 	return (
-		<Layout title="Press - DefiLlama" defaultSEO>
+		<Layout title="Press - Llama.Fi" defaultSEO>
 			<RowBetween>
 				<TYPE.largeHeader>Press & Media</TYPE.largeHeader>
 			</RowBetween>
 			<Panel style={{ marginTop: '6px' }}>
 				<DashGrid style={{ height: 'fit-content', padding: '0 0 1rem 0' }}>
-					<TYPE.heading>About DeFiLlama</TYPE.heading>
+					<TYPE.heading>About Llama.Fi</TYPE.heading>
 					<Divider />
 					<TYPE.main>
-						DefiLlama is the largest TVL aggregator for DeFi (Decentralized Finance). Our data is fully{' '}
+						Llama.Fi is the largest TVL aggregator for DeFi (Decentralized Finance). Our data is fully{' '}
 						<Link href="https://github.com/DefiLlama/DefiLlama-Adapters">open-source</Link> and maintained by a team of
 						passionate individuals and{' '}
 						<Link href="https://github.com/DefiLlama/DefiLlama-Adapters/graphs/contributors">contributors</Link> from
@@ -97,41 +97,7 @@ function PressPage() {
 					<TYPE.main area="account">Contact</TYPE.main>
 					<Divider />
 					<TYPE.main>
-						Contact us on <Link href="https://twitter.com/defillama">Twitter</Link> or{' '}
-						<Link href="https://discord.defillama.com">Discord</Link> or {' '} by email <Link href="mailto:contact@llama-corp.com">contact@llama-corp.com</Link>
-					</TYPE.main>
-					<TYPE.main>DeFiLlama is a part of <Link href="https://twitter.com/llamacorporg">Llama Corp</Link>.
-					</TYPE.main>
-					<TYPE.main>
-					Llama Corp is a collective building out the decentralized future with data analytics, infrastructure, payments, cross-chain and media solutions used by more than 10M monthly users.
-					</TYPE.main>
-				</DashGrid>
-			</Panel>
-			<Panel style={{ marginTop: '6px' }}>
-				<DashGrid style={{ height: 'fit-content', padding: '0 0 1rem 0' }}>
-					<TYPE.heading>Press</TYPE.heading>
-					<Divider />
-
-					<TYPE.main>DL Data is free to use by anyone. Attribution is always appreciated.</TYPE.main>
-					<Divider />
-					<TYPE.main>
-						DeFiLlama is used across a large number of media organisations and financial institutions.
-					</TYPE.main>
-					<PanelWrapper mt={[0, 0, '1rem']}>
-						{pressList.map((imageFilename) => (
-							<Link href={imageFilename[1]} key={imageFilename[0]}>
-								<PressPanel imageFilename={imageFilename[0]} />
-							</Link>
-						))}
-					</PanelWrapper>
-				</DashGrid>
-			</Panel>
-			<Panel style={{ marginTop: '6px' }}>
-				<DashGrid style={{ height: 'fit-content', padding: '0 0 1rem 0' }}>
-					<TYPE.heading>Branding Assets</TYPE.heading>
-					<Divider />
-					<TYPE.main>
-						You can download all our branding assets from <Link href="/defillama-press-kit.zip">here</Link>.
+						Contact us on <Link href="https://twitter.com/llamadotfi">Twitter</Link>
 					</TYPE.main>
 				</DashGrid>
 			</Panel>

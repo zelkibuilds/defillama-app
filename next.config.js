@@ -60,7 +60,7 @@ const nextConfig = {
 			},
 			{
 				source: '/aggregator',
-				destination: 'https://swap.defillama.com/',
+				destination: 'https://swap.llama.fi/',
 				permanent: true
 			},
 			{

@@ -46,7 +46,7 @@ export async function getStaticProps() {
 
 export default function YieldStrategies(data) {
 	return (
-		<Layout title={`Yield Strategies - DefiLlama Yield`} defaultSEO>
+		<Layout title={`Yield Strategies - Llama.Fi Yield`} defaultSEO>
 			<Announcement>{disclaimer}</Announcement>
 			<YieldsStrategyPage {...data} />
 		</Layout>

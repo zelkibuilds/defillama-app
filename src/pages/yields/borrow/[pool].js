@@ -366,7 +366,7 @@ const TableWrapper = styled(DetailsTable)`
 
 export default function YieldPoolPage(props) {
 	return (
-		<Layout title={`Yield Chart - DefiLlama`} defaultSEO>
+		<Layout title={`Yield Chart - Llama.Fi`} defaultSEO>
 			<PageView {...props} />
 		</Layout>
 	)

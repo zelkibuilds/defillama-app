@@ -7,8 +7,7 @@ import { useYieldApp } from '~/hooks'
 import { LogoWrapper, Header } from '../shared'
 import { navLinks } from '../Links'
 import ThemeSwitch from '../ThemeSwitch'
-import logoLight from '~/public/defillama-press-kit/defi/PNG/defillama.png'
-import logoDark from '~/public/defillama-press-kit/defi/PNG/defillama-dark.png'
+import logoLight from '~/public/logo.png'
 import { useDarkModeManager } from '~/contexts/LocalStorage'
 import SubMenu from './SubMenu'
 
@@ -23,8 +22,8 @@ export default function DesktopNav() {
 		<Wrapper as="aside">
 			<Link href="/" passHref>
 				<LogoWrapper>
-					<span className="visually-hidden">Navigate to Home Page</span>
-					<Image src={darkMode ? logoLight : logoDark} alt="Navigate to Home Page" priority />
+					<Image src={logoLight} alt="=" priority />
+					<span>Llama.Fi</span>
 				</LogoWrapper>
 			</Link>
 

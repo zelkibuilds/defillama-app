@@ -300,7 +300,7 @@ const RaisesContainer = ({ raises, investors, rounds, sectors, chains, investorN
 	const totalAmountRaised = monthlyInvestment.reduce((acc, curr) => (acc += curr[1]), 0)
 
 	return (
-		<Layout title={`Raises - DefiLlama`} defaultSEO>
+		<Layout title={`Raises - Llama.Fi`} defaultSEO>
 			<AnnouncementWrapper>
 				<span>Are we missing any funding round?</span>{' '}
 				<a

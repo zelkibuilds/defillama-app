@@ -44,15 +44,6 @@ export const fetchArticles = async ({ tags = '', size = 2 }) => {
 
 	const target = tags.toLowerCase()
 
-	const articles: IArticle[] =
-		articlesRes?.content_elements
-			?.filter((element) => element.taxonomy?.tags?.some((tag) => tag.text.toLowerCase() === target))
-			.map((element) => ({
-				headline: element.headlines.basic,
-				date: element.display_date,
-				href: `https://dlnews.com${element.canonical_url}`,
-				imgSrc: element.promo_items?.basic?.url ?? null
-			})) ?? []
-
+	const articles: IArticle[] = []
 	return articles.slice(0, size)
 }

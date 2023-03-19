@@ -66,7 +66,7 @@ export default function ProtocolItem({ protocolSummary, ...props }: InferGetStat
 
 	return (
 		<OverviewItemContainer
-			title={`${protocolSummary.name} ${type} - DefiLlama`}
+			title={`${protocolSummary.name} ${type} - Llama.Fi`}
 			{...props}
 			protocolSummary={protocolSummary}
 		/>

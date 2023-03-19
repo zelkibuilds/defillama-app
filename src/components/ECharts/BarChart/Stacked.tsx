@@ -12,8 +12,8 @@ import {
 	TooltipComponent
 } from 'echarts/components'
 import { v4 as uuid } from 'uuid'
-import logoLight from '~/public/defillama-press-kit/defi/PNG/defillama-light-neutral.png'
-import logoDark from '~/public/defillama-press-kit/defi/PNG/defillama-dark-neutral.png'
+// import logoLight from '~/public/logo.png'
+// import logoDark from '~/public/logo.png'
 import { useMedia } from '~/hooks'
 import { useDarkModeManager } from '~/contexts/LocalStorage'
 import { toK } from '~/utils'
@@ -108,15 +108,15 @@ export default function StackedBarChart({
 
 		chartInstance.setOption({
 			graphic: {
-				type: 'image',
-				z: 0,
-				style: {
-					image: isDark ? logoLight.src : logoDark.src,
-					height: 40,
-					opacity: 0.3
-				},
-				left: isSmall ? '40%' : '45%',
-				top: '130px'
+				// type: 'image',
+				// z: 0,
+				// style: {
+				// 	image: isDark ? logoLight.src : logoDark.src,
+				// 	height: 40,
+				// 	opacity: 0.3
+				// },
+				// left: isSmall ? '40%' : '45%',
+				// top: '130px'
 			},
 			legend: showLegend
 				? {

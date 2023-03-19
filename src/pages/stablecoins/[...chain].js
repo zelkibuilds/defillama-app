@@ -53,7 +53,7 @@ export default function PeggedAssets({
 	backgroundColor
 }) {
 	return (
-		<Layout title={`Stablecoins Circulating - DefiLlama`} defaultSEO>
+		<Layout title={`Stablecoins Circulating - Llama.Fi`} defaultSEO>
 			<PeggedList
 				chains={chains}
 				selectedChain={chain}

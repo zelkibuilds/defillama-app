@@ -16,7 +16,7 @@ export async function getStaticProps() {
 
 export default function Portfolio({ pools }) {
 	return (
-		<Layout title={`Saved Pools - DefiLlama`} defaultSEO>
+		<Layout title={`Saved Pools - Llama.Fi`} defaultSEO>
 			<Announcement>{disclaimer}</Announcement>
 			<YieldsWatchlistContainer protocolsDict={pools} />
 		</Layout>

@@ -33,7 +33,7 @@ export async function getStaticProps() {
 
 export default function YieldPlots(data) {
 	return (
-		<Layout title={`Stablecoins - DefiLlama Yield`} defaultSEO>
+		<Layout title={`Stablecoins - Llama.Fi Yield`} defaultSEO>
 			<Announcement>{disclaimer}</Announcement>
 			<YieldPage {...data} />
 		</Layout>

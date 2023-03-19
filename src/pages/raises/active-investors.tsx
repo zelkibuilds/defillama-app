@@ -69,7 +69,7 @@ const ActiveInvestors = ({ investors }) => {
 	})
 
 	return (
-		<Layout title={`Active Investors - DefiLlama`} defaultSEO>
+		<Layout title={`Active Investors - Llama.Fi`} defaultSEO>
 			<Header>Active Investors</Header>
 			<VirtualTable instance={instance} />
 		</Layout>

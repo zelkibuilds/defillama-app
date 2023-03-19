@@ -78,7 +78,7 @@ export async function getStaticProps() {
 
 export default function Protocols({ langs, langsUnique, langsDominance, osUnique, osLangs, osDominance, colors }) {
 	return (
-		<Layout title={`Languages - DefiLlama`} defaultSEO>
+		<Layout title={`Languages - Llama.Fi`} defaultSEO>
 			<ProtocolsChainsSearch step={{ category: 'Home', name: 'Languages', hideOptions: true }} />
 
 			<SectionHeader>Breakdown by Smart Contract Languages</SectionHeader>

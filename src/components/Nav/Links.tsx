@@ -45,20 +45,8 @@ interface ILinks {
 const defaultToolsAndFooterLinks = {
 	tools: [
 		{
-			name: 'DefiLlama Extension',
+			name: 'Llama.Fi Extension',
 			path: 'https://chrome.google.com/webstore/detail/defillama/phgiabfbjodhgckcffppiboooeiecgeg',
-			newTag: true,
-			external: true
-		},
-		{
-			name: 'LlamaNodes',
-			path: 'https://llamanodes.com/',
-			newTag: true,
-			external: true
-		},
-		{
-			name: 'DLNews',
-			path: 'https://dlnews.com/',
 			newTag: true,
 			external: true
 		},
@@ -73,11 +61,6 @@ const defaultToolsAndFooterLinks = {
 			name: 'Token Liquidity',
 			path: '/liquidity',
 			newTag: true,
-			external: true
-		},
-		{
-			name: 'Wiki',
-			path: 'https://wiki.defillama.com/wiki/Main_Page',
 			external: true
 		},
 		{
@@ -103,12 +86,12 @@ const defaultToolsAndFooterLinks = {
 		{ name: 'About / Contact', path: '/about' },
 		{
 			name: 'Twitter',
-			path: 'https://twitter.com/DefiLlama',
+			path: 'https://twitter.com/llamadotfi',
 			external: true
 		},
 		{
 			name: 'Discord',
-			path: 'https://discord.defillama.com',
+			path: 'https://discord.llama.fi',
 			external: true
 		},
 		{
@@ -164,11 +147,6 @@ export const navLinks: ILinks = {
 				external: true
 			},
 			{
-				name: 'Wiki',
-				path: 'https://wiki.defillama.com/wiki/Main_Page',
-				external: true
-			},
-			{
 				name: 'Press / Media',
 				path: '/press'
 			},
@@ -183,15 +161,15 @@ export const navLinks: ILinks = {
 			}
 		],
 		footer: [
-			{ name: 'About DefiLlama', path: '/about' },
+			{ name: 'About Llama.Fi', path: '/about' },
 			{
 				name: 'Twitter',
-				path: 'https://twitter.com/DefiLlama',
+				path: 'https://twitter.com/llamadotfi',
 				external: true
 			},
 			{
 				name: 'Discord',
-				path: 'https://discord.defillama.com',
+				path: 'https://discord.llama.fi',
 				external: true
 			},
 			{
@@ -201,7 +179,7 @@ export const navLinks: ILinks = {
 		],
 		icon: <Percent size={16} />
 	},
-	'DefiLlama Swap': {
+	'Llama.Fi Swap': {
 		main: [],
 		...defaultToolsAndFooterLinks,
 		icon: <Repeat size={16} />
@@ -274,7 +252,7 @@ export const linksWithNoSubMenu = [
 	{ name: 'Hacks', url: '/hacks' },
 	{ name: 'Borrow Aggregator', url: '/borrow' },
 	{ name: 'CEX Transparency', url: '/cexs' },
-	{ name: 'DefiLlama Swap', url: 'https://swap.defillama.com/', external: true },
+	{ name: 'Llama.Fi Swap', url: 'https://swap.llama.fi/', external: true },
 	{ name: 'ETH Liquid Staking', url: '/lsd' },
 	{ name: 'NFTs', url: '/nfts' }
 ]

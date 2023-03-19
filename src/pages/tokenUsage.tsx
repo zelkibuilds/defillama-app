@@ -49,7 +49,7 @@ export default function Tokens({ searchData }) {
 	}, [protocols, includeCentraliseExchanges])
 
 	return (
-		<Layout title="Token Usage - DefiLlama" defaultSEO style={layoutStyles}>
+		<Layout title="Token Usage - Llama.Fi" defaultSEO style={layoutStyles}>
 			<Announcement notCancellable>This is not an exhaustive list</Announcement>
 			<DesktopSearch data={searchData} placeholder="Search tokens..." data-alwaysdisplay onItemClick={onItemClick} />
 			<>

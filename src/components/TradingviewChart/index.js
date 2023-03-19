@@ -8,8 +8,8 @@ import { RefreshCw } from 'react-feather'
 import { IconWrapper } from '~/components'
 import { useDarkModeManager } from '~/contexts/LocalStorage'
 import { formattedNum } from '~/utils'
-import logoLight from '~/public/defillama-press-kit/defi/PNG/defillama-light-neutral.png'
-import logoDark from '~/public/defillama-press-kit/defi/PNG/defillama-dark-neutral.png'
+// import logoLight from '~/public/logo.png'
+// import logoDark from '~/public/logo.png'
 
 dayjs.extend(utc)
 
@@ -285,9 +285,9 @@ const TradingViewChart = ({
 					}}
 				/>
 			</IconWrapper>
-			<Watermark>
+			{/* <Watermark>
 				<Image src={isDark ? logoLight : logoDark} height={40} alt="" />
-			</Watermark>
+			</Watermark> */}
 		</Wrapper>
 	)
 }

@@ -127,7 +127,7 @@ export default function CompareProtocolsTvls({
 	const colors = Object.fromEntries(selectedProtocols?.map((p) => [p, stackColors[p]]) ?? [])
 
 	return (
-		<Layout title={`Compare Protocols TVLs - DefiLlama`} defaultSEO>
+		<Layout title={`Compare Protocols TVLs - Llama.Fi`} defaultSEO>
 			<ProtocolsChainsSearch step={{ category: 'Home', name: 'Compare Protocols' }} />
 
 			<Wrapper>

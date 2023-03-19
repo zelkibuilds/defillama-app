@@ -13,7 +13,7 @@ const Style = styled.div`
 
 export default function HomePage(props) {
 	return (
-		<Layout title="DefiLlama - Page not found">
+		<Layout title="Llama.Fi - Page not found">
 			<Style>404 - Page not found</Style>
 		</Layout>
 	)

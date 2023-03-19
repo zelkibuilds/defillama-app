@@ -12,7 +12,7 @@ export default function ApiDocs() {
 	const Wrapper = isDark ? DarkSwagger : styled.div``
 
 	return (
-		<Layout title={`API Docs - DefiLlama`}>
+		<Layout title={`API Docs - Llama.Fi`}>
 			<HideSections>
 				<Wrapper>
 					<Swagger />
@@ -41,7 +41,7 @@ function Swagger() {
 					theme: 'agate'
 				},
 				requestInterceptor: (request) => {
-					request.url = request.url.replace(/%3A/g, ":").replace(/%2C/g, ",")
+					request.url = request.url.replace(/%3A/g, ':').replace(/%2C/g, ',')
 					return request
 				}
 			})

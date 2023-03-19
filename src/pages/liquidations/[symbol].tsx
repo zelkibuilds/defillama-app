@@ -81,11 +81,11 @@ const LiquidationsHomePage: NextPage<{ data: ChartData; prevData: ChartData; opt
 	}, [])
 
 	return (
-		<Layout title={`${data.name} (${data.symbol.toUpperCase()}) Liquidation Levels - DefiLlama`}>
+		<Layout title={`${data.name} (${data.symbol.toUpperCase()}) Liquidation Levels - Llama.Fi`}>
 			<SEO
 				liqsPage
 				cardName={`${data.name} (${data.symbol.toUpperCase()})`}
-				logo={'https://defillama.com' + liquidationsIconUrl(data.symbol.toLowerCase(), true)}
+				logo={'https://llama.fi' + liquidationsIconUrl(data.symbol.toLowerCase(), true)}
 				tvl={'$' + getReadableValue(data.totalLiquidable)}
 			/>
 

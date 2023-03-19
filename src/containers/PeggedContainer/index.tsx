@@ -253,7 +253,7 @@ export default function PeggedContainer({
 
 	return (
 		<Layout
-			title={`${name}: Circulating and stats - DefiLlama`}
+			title={`${name}: Circulating and stats - Llama.Fi`}
 			backgroundColor={transparentize(0.6, backgroundColor)}
 			style={{ gap: '48px' }}
 		>
@@ -441,27 +441,6 @@ export default function PeggedContainer({
 													color={backgroundColor}
 												>
 													<span>Twitter</span>
-													<ArrowUpRight size={14} />
-												</Button>
-											</Link>
-										</span>
-									</>
-								</FlexRow>
-							)}
-
-							{wiki && (
-								<FlexRow>
-									<>
-										<span>
-											<Link href={wiki} passHref>
-												<Button
-													as="a"
-													target="_blank"
-													rel="noopener noreferrer"
-													useTextColor={true}
-													color={backgroundColor}
-												>
-													<span>DeFiLlama Wiki</span>
 													<ArrowUpRight size={14} />
 												</Button>
 											</Link>

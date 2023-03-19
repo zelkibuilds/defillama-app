@@ -230,7 +230,7 @@ const TotalLocked = styled(Header)`
 
 export default function LSDs(props) {
 	return (
-		<Layout title={`Liquid Staking Derivatives - DefiLlama`} defaultSEO>
+		<Layout title={`Liquid Staking Derivatives - Llama.Fi`} defaultSEO>
 			<PageView {...props} />
 		</Layout>
 	)

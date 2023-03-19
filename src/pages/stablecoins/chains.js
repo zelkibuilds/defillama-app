@@ -25,7 +25,7 @@ export default function PeggedAssets({
 	chainTVLData
 }) {
 	return (
-		<Layout title={`Stablecoins Circulating - DefiLlama`} defaultSEO>
+		<Layout title={`Stablecoins Circulating - Llama.Fi`} defaultSEO>
 			<PeggedChainsOverview
 				chainCirculatings={chainCirculatings}
 				chartData={chartData}

@@ -2,8 +2,7 @@ import * as React from 'react'
 import Image from 'next/future/image'
 import styled, { css, keyframes } from 'styled-components'
 import { useNFTApp } from '~/hooks'
-import DefiLogo from '~/assets/logo_white.png'
-import NFTLogo from '~/assets/nft_logo_white.png'
+import DefiLogo from '~/public/logo.png'
 
 const rotate = keyframes`
   0% { transform: scale(1); }
@@ -40,7 +39,7 @@ const LocalLoader = ({ fill, ...props }: ILocalLoaderProps) => {
 
 	return (
 		<Loader fill={fill} {...props}>
-			<Image src={isNFTApp ? NFTLogo : DefiLogo} width={72} alt="loading-icon" />
+			<Image src={isNFTApp ? DefiLogo : DefiLogo} width={72} alt="loading-icon" />
 		</Loader>
 	)
 }
