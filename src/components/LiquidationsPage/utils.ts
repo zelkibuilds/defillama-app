@@ -66,17 +66,6 @@ export const getOption = (
 	}
 
 	const option: ECBasicOption = {
-		graphic: {
-			// type: 'image',
-			// z: 0,
-			// style: {
-			// 	image: isDark ? logoLight.src : logoDark.src,
-			// 	height: 40,
-			// 	opacity: 0.3
-			// },
-			// left: isSmall ? '40%' : '45%',
-			// top: '130px'
-		},
 		legend: {
 			orient: 'vertical',
 			align: 'left',

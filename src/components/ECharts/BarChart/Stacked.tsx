@@ -107,17 +107,6 @@ export default function StackedBarChart({
 		const chartInstance = createInstance()
 
 		chartInstance.setOption({
-			graphic: {
-				// type: 'image',
-				// z: 0,
-				// style: {
-				// 	image: isDark ? logoLight.src : logoDark.src,
-				// 	height: 40,
-				// 	opacity: 0.3
-				// },
-				// left: isSmall ? '40%' : '45%',
-				// top: '130px'
-			},
 			legend: showLegend
 				? {
 						right: '2%',
