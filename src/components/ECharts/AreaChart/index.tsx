@@ -223,7 +223,6 @@ export default function AreaChart({
 		}
 
 		chartInstance.setOption({
-			graphic: { ...graphic },
 			tooltip: {
 				...tooltip
 			},

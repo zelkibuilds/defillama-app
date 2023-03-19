@@ -135,9 +135,6 @@ export default function BarChart({
 		const { graphic, titleDefaults, grid, tooltip, xAxis, yAxis, legend, dataZoom } = defaultChartSettings
 
 		chartInstance.setOption({
-			graphic: {
-				...graphic
-			},
 			tooltip: {
 				...tooltip
 			},

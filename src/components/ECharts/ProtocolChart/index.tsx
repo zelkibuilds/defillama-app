@@ -135,7 +135,6 @@ export default function AreaBarChart({
 		}
 
 		chartInstance.setOption({
-			graphic: { ...graphic },
 			legend: {
 				...legend,
 				left: 65,
