@@ -8,6 +8,10 @@ import OverviewContainer, { IOverviewContainerProps } from '~/containers/DexsAnd
 import Layout from '~/layout'
 import { capitalizeFirstLetter } from '~/utils'
 
+const cgDerivsId = {
+	'2797': 'aevo'
+}
+
 export const getStaticProps: GetStaticProps<IOverviewContainerProps> = async ({
 	params
 }: GetStaticPropsContext<{ type: string; chain: string }>) => {
@@ -24,9 +28,43 @@ export const getStaticProps: GetStaticProps<IOverviewContainerProps> = async ({
 			categories.add(p.category)
 		}
 	})
+
+	let protocols = data.protocols
+
+	// console.log({ type: params.type, protocols })
+
+	if (params.type === 'options') {
+		const [
+			derivs,
+			{
+				coins: {
+					'coingecko:bitcoin': { price: btcPrice }
+				}
+			}
+		] = await Promise.all([
+			fetch(
+				`https://pro-api.coingecko.com/api/v3/derivatives/exchanges?per_page=1000&x_cg_pro_api_key=${process.env.CG_KEY}`
+			).then((r) => r.json()),
+			fetch(`https://coins.llama.fi/prices/current/coingecko:bitcoin`).then((r) => r.json())
+		])
+
+		protocols = data.protocols.map((protocol) => {
+			if (cgDerivsId[protocol.id]) {
+				const _derivs = derivs && !derivs.status && derivs.find((ex) => ex.id === cgDerivsId[protocol.id])
+
+				if (_derivs) {
+					protocol.oi = _derivs.open_interest_btc * btcPrice
+				}
+			}
+
+			return protocol
+		})
+	}
+
 	return {
 		props: {
 			...data,
+			protocols,
 			type: params.type,
 			categories: Array.from(categories)
 		},

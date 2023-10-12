@@ -105,6 +105,7 @@ export type ProtocolAdaptorSummary = {
 	methodology?: string | IJSON<string>
 	protocolType?: string
 	defillamaId?: string
+	oi?: number
 } & ExtraTypes
 
 type ExtraTypes = {
