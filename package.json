@@ -13,7 +13,7 @@
 		"format": "prettier --write .",
 		"build:metadata": "node scripts/pullMetadata.js",
 		"build": "yarn run build:metadata && next build",
-		"start": "next start --keepAliveTimeout 61000",
+		"start": "next start",
 		"lint": "next lint",
 		"ts": "tsc --noEmit"
 	},
