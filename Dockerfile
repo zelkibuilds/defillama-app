@@ -3,9 +3,9 @@ FROM node:lts-alpine AS base
 # Stage 1: Install dependencies
 FROM base AS deps
 WORKDIR /app
-COPY package.json package-lock.json* ./
+COPY package.json yarn.lock* ./
 COPY sst-env.d.ts* ./
-RUN npm ci
+RUN yarn install --frozen-lockfile
 
 # Stage 2: Build the application
 FROM base AS builder
@@ -14,11 +14,11 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # If static pages do not need linked resources
-RUN npm run build
+RUN yarn build
 
 # If static pages need linked resources
 # RUN --mount=type=secret,id=SST_RESOURCE_MyResource,env=SST_RESOURCE_MyResource \
-#   npm run build
+#   yarn build
 
 # Stage 3: Production server
 FROM base AS runner
