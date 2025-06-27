@@ -8,7 +8,6 @@
 	"type": "module",
 	"scripts": {
 		"analyze": "ANALYZE=true yarn build",
-		"postinstall": "./scripts/postinstall.sh",
 		"dev": "yarn run build:metadata && next dev",
 		"format": "prettier --write .",
 		"build:metadata": "node scripts/pullMetadata.js",
@@ -64,7 +63,7 @@
 		"@types/swagger-ui-react": "4.11.0",
 		"autoprefixer": "10.4.20",
 		"eslint": "8.6.0",
-		"eslint-config-next": "12.3.1",
+		"eslint-config-next": "^15.3.4",
 		"eslint-config-prettier": "8.3.0",
 		"postcss": "8.4.49",
 		"prettier": "2.5.1",
