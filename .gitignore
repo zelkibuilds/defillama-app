@@ -29,3 +29,10 @@ yarn-error.log*
 *.log
 
 .cache
+
+# sst
+.sst
+
+
+# open-next
+.open-next

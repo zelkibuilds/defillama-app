@@ -24,6 +24,6 @@
 		"noFallthroughCasesInSwitch": true,
 		"strictNullChecks": false
 	},
-	"exclude": ["node_modules"],
+	"exclude": ["node_modules","sst.config.ts"],
 	"include": ["**/*.js", "**/*.ts", "**/*.tsx", "postcss.config.cjs"]
 }
