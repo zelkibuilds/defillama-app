@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useCallback, ReactNode, useState } from 'react'
 import toast from 'react-hot-toast'
+import { createSiweMessage } from 'viem/siwe'
 import pb, { AuthModel } from '~/utils/pocketbase'
-import { SiweMessage } from 'siwe'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { AUTH_SERVER } from '~/constants'
 
@@ -255,9 +255,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 			}
 
 			const { nonce } = await getNonce(address)
-			const message = new SiweMessage({
+			const message = createSiweMessage({
 				domain: window.location.host,
-				address,
+				address: address as `0x${string}`,
 				statement: 'Sign in with Ethereum to the app.',
 				uri: window.location.origin,
 				version: '1',
@@ -266,7 +266,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 			})
 
 			const signature = await signMessageFunction({
-				message: message.prepareMessage(),
+				message,
 				account: address as `0x${string}`
 			})
 

@@ -2,7 +2,7 @@ import {
 	BASE_API,
 	DIMENISIONS_OVERVIEW_API,
 	DIMENISIONS_SUMMARY_BASE_API,
-	MCAPS_API,
+	COINS_API,
 	PROTOCOLS_API,
 	REV_PROTOCOLS
 } from '~/constants'
@@ -549,7 +549,7 @@ export const getAdapterByChainPageData = async ({
 		.map((e) => [e.name, metadataCache.chainMetadata[slug(e.name)]?.gecko_id ?? null])
 		.filter((e) => (e[1] ? true : false))
 
-	const chainMcaps = await fetch(MCAPS_API, {
+	const chainMcaps = await fetch('https://coins.llama.fi/mcaps', {
 		method: 'POST',
 		body: JSON.stringify({
 			coins: chains.map(([_, geckoId]) => `coingecko:${geckoId}`)
@@ -817,20 +817,39 @@ export const getChainsByAdapterPageData = async ({
 	dataType?: `${ADAPTER_DATA_TYPES}`
 	route: string
 }): Promise<IChainsByAdapterPageData> => {
-	try {
-		const allChains = []
-		for (const chain in metadataCache.chainMetadata) {
-			if (metadataCache.chainMetadata[chain][ADAPTER_TYPES_TO_METADATA_TYPE[adapterType]]) {
-				allChains.push(chain)
-			}
+	const allChains = []
+	for (const chain in metadataCache.chainMetadata) {
+		if (metadataCache.chainMetadata[chain][ADAPTER_TYPES_TO_METADATA_TYPE[adapterType]]) {
+			allChains.push(chain)
 		}
+	}
 
-		const chainsData = (
+	const chainsData = (
+		await Promise.allSettled(
+			allChains.map(async (chain) =>
+				getAdapterChainOverview({
+					adapterType,
+					dataType,
+					chain,
+					excludeTotalDataChart: false,
+					excludeTotalDataChartBreakdown: true
+				})
+			)
+		)
+	)
+		.map((e) => (e.status === 'fulfilled' ? e.value : null))
+		.filter((e) => e != null)
+
+	const bribesByChain = {}
+	const tokenTaxesByChain = {}
+
+	if (adapterType === 'fees') {
+		const bribesData = (
 			await Promise.allSettled(
 				allChains.map(async (chain) =>
 					getAdapterChainOverview({
 						adapterType,
-						dataType,
+						dataType: 'dailyBribesRevenue',
 						chain,
 						excludeTotalDataChart: false,
 						excludeTotalDataChartBreakdown: true
@@ -841,84 +860,64 @@ export const getChainsByAdapterPageData = async ({
 			.map((e) => (e.status === 'fulfilled' ? e.value : null))
 			.filter((e) => e != null)
 
-		const bribesByChain = {}
-		const tokenTaxesByChain = {}
+		for (const chain of bribesData) {
+			bribesByChain[chain.chain] = {
+				total24h: chain.total24h ?? null,
+				total30d: chain.total30d ?? null
+			}
+		}
 
-		if (adapterType === 'fees') {
-			const bribesData = (
-				await Promise.allSettled(
-					allChains.map(async (chain) =>
-						getAdapterChainOverview({
-							adapterType,
-							dataType: 'dailyBribesRevenue',
-							chain,
-							excludeTotalDataChart: false,
-							excludeTotalDataChartBreakdown: true
-						})
-					)
+		const tokensTaxesData = (
+			await Promise.allSettled(
+				allChains.map(async (chain) =>
+					getAdapterChainOverview({
+						adapterType,
+						dataType: 'dailyBribesRevenue',
+						chain,
+						excludeTotalDataChart: false,
+						excludeTotalDataChartBreakdown: true
+					})
 				)
 			)
-				.map((e) => (e.status === 'fulfilled' ? e.value : null))
-				.filter((e) => e != null)
+		)
+			.map((e) => (e.status === 'fulfilled' ? e.value : null))
+			.filter((e) => e != null)
 
-			for (const chain of bribesData) {
-				bribesByChain[chain.chain] = {
-					total24h: chain.total24h ?? null,
-					total30d: chain.total30d ?? null
-				}
-			}
-
-			const tokensTaxesData = (
-				await Promise.allSettled(
-					allChains.map(async (chain) =>
-						getAdapterChainOverview({
-							adapterType,
-							dataType: 'dailyBribesRevenue',
-							chain,
-							excludeTotalDataChart: false,
-							excludeTotalDataChartBreakdown: true
-						})
-					)
-				)
-			)
-				.map((e) => (e.status === 'fulfilled' ? e.value : null))
-				.filter((e) => e != null)
-
-			for (const chain of tokensTaxesData) {
-				tokenTaxesByChain[chain.chain] = {
-					total24h: chain.total24h ?? null,
-					total30d: chain.total30d ?? null
-				}
+		for (const chain of tokensTaxesData) {
+			tokenTaxesByChain[chain.chain] = {
+				total24h: chain.total24h ?? null,
+				total30d: chain.total30d ?? null
 			}
 		}
+	}
 
-		const chartData = {}
+	const chartData = {}
 
-		for (const chain of chainsData) {
-			for (const [date, value] of chain.totalDataChart) {
-				chartData[date] = chartData[date] || {}
-				chartData[date][chain.chain] = value
-			}
+	for (const chain of chainsData) {
+		for (const [date, value] of chain.totalDataChart ?? []) {
+			chartData[date] = chartData[date] || {}
+			chartData[date][chain.chain] = value
 		}
+	}
 
-		const chains = chainsData
-			.map((c) => ({
-				name: c.chain,
-				logo: chainIconUrl(c.chain),
-				total24h: c.total24h ?? null,
-				total30d: c.total30d ?? null,
-				...(bribesByChain[c.chain] ? { bribes: bribesByChain[c.chain] } : {}),
-				...(tokenTaxesByChain[c.chain] ? { tokenTax: tokenTaxesByChain[c.chain] } : {})
-			}))
-			.sort((a, b) => (b.total24h ?? 0) - (a.total24h ?? 0))
-		return {
-			adapterType,
-			dataType: dataType ?? null,
-			chartData,
-			chains,
-			allChains: chains.map((c) => c.name)
-		}
-	} catch (error) {}
+	const chains = chainsData
+		.map((c) => ({
+			name: c.chain,
+			logo: chainIconUrl(c.chain),
+			total24h: c.total24h ?? null,
+			total30d: c.total30d ?? null,
+			...(bribesByChain[c.chain] ? { bribes: bribesByChain[c.chain] } : {}),
+			...(tokenTaxesByChain[c.chain] ? { tokenTax: tokenTaxesByChain[c.chain] } : {})
+		}))
+		.sort((a, b) => (b.total24h ?? 0) - (a.total24h ?? 0))
+
+	return {
+		adapterType,
+		dataType: dataType ?? null,
+		chartData,
+		chains,
+		allChains: chains.map((c) => c.name)
+	}
 }
 
 export const getChainsByREVPageData = async (): Promise<IChainsByREVPageData> => {
@@ -970,6 +969,9 @@ export const getChainsByREVPageData = async (): Promise<IChainsByREVPageData> =>
 
 async function handleFetchResponse(res: Response) {
 	try {
+		if (!res.ok) {
+			throw new Error(res.statusText ?? `Failed to fetch ${res.url}`)
+		}
 		const response = await res.json()
 		return response
 	} catch (e) {

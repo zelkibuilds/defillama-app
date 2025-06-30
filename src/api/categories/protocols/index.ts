@@ -7,7 +7,6 @@ import {
 } from '~/utils'
 import type { IFusedProtocolData, IProtocolResponse } from '~/api/types'
 import {
-	CATEGORY_API,
 	PROTOCOLS_API,
 	PROTOCOL_API,
 	PROTOCOL_EMISSIONS_API,
@@ -16,7 +15,6 @@ import {
 	YIELD_POOLS_API,
 	LSD_RATES_API,
 	CHAINS_ASSETS,
-	CHART_API,
 	ETF_SNAPSHOT_API,
 	ETF_FLOWS_API,
 	CHAIN_ASSETS_FLOWS,
@@ -24,13 +22,12 @@ import {
 	CATEGORY_PERFORMANCE_API,
 	CATEGORY_COIN_PRICES_API,
 	CATEGORY_INFO_API,
-	COINS_INFO_API
+	COINS_INFO_API,
+	COINS_API
 } from '~/constants'
 import { BasicPropsToKeep, formatProtocolsData } from './utils'
 import { fetchWithErrorLogging } from '~/utils/async'
 import { sluggify } from '~/utils/cache-client'
-import { getAdapterChainOverview } from '~/containers/DimensionAdapters/queries'
-import { DEFI_SETTINGS_KEYS } from '~/contexts/LocalStorage'
 
 export const getAllProtocolEmissionsWithHistory = async ({
 	startDate,
@@ -42,7 +39,7 @@ export const getAllProtocolEmissionsWithHistory = async ({
 	try {
 		const res = await fetchWithErrorLogging(PROTOCOL_EMISSIONS_API).then((res) => res.json())
 		const coins = await fetchWithErrorLogging(
-			`https://coins.llama.fi/prices/current/${res
+			`${COINS_API}/prices/current/${res
 				.filter((p) => p.gecko_id)
 				.map((p) => 'coingecko:' + p.gecko_id)
 				.join(',')}`
@@ -115,7 +112,7 @@ export const getAllProtocolEmissions = async ({
 	try {
 		const res = await fetchWithErrorLogging(PROTOCOL_EMISSIONS_API).then((res) => res.json())
 		const coins = await fetchWithErrorLogging(
-			`https://coins.llama.fi/prices/current/${res
+			`${COINS_API}/prices/current/${res
 				.filter((p) => p.gecko_id)
 				.map((p) => 'coingecko:' + p.gecko_id)
 				.join(',')}`
@@ -265,7 +262,7 @@ export const getProtocolEmissons = async (protocolName: string) => {
 		const protocolEmissions = { documented: {}, realtime: {} }
 		const emissionCategories = { documented: [], realtime: [] }
 
-		const prices = await fetchWithErrorLogging(`https://coins.llama.fi/prices/current/${metadata.token}?searchWidth=4h`)
+		const prices = await fetchWithErrorLogging(`${COINS_API}/prices/current/${metadata.token}?searchWidth=4h`)
 			.then((res) => res.json())
 			.catch((err) => {
 				console.log(err)

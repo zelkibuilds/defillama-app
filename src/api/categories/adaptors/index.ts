@@ -2,9 +2,9 @@ import type { IParentProtocol } from '~/api/types'
 import {
 	PROTOCOLS_API,
 	DIMENISIONS_SUMMARY_BASE_API,
-	MCAPS_API,
 	EMISSION_BREAKDOWN_API,
-	DIMENISIONS_OVERVIEW_API
+	DIMENISIONS_OVERVIEW_API,
+	COINS_API
 } from '~/constants'
 import { getUniqueArray } from '~/containers/DimensionAdapters/utils'
 import {
@@ -270,7 +270,7 @@ export const getDimensionAdapterChainPageData = async (type: string, chain?: str
 		.map((e) => [e.name, chainMetadata[slug(e.name)]?.gecko_id ?? null])
 		.filter((e) => (e[1] ? true : false))
 
-	const chainMcaps = await fetch(MCAPS_API, {
+	const chainMcaps = await fetch('https://coins.llama.fi/mcaps', {
 		method: 'POST',
 		body: JSON.stringify({
 			coins: chains.map(([_, geckoId]) => `coingecko:${geckoId}`)
