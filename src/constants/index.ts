@@ -7,8 +7,8 @@ export const timeframeOptions = {
 }
 
 // API endpoints
-const SERVER_URL = process.env.SERVER_URL ?? 'https://api.llama.fi'
-const DATASETS_SERVER_URL = process.env.DATASETS_SERVER_URL ?? 'https://defillama-datasets.llama.fi'
+const SERVER_URL = 'https://api.llama.fi'
+const DATASETS_SERVER_URL = 'https://defillama-datasets.llama.fi'
 export const DATASETS_S3_PATH = 'https://defillama-datasets.s3.eu-central-1.amazonaws.com'
 export const DATASETS_R2_PATH = 'https://defillama-datasets.llama.fi'
 export const CHART_API = `${SERVER_URL}/lite/charts`
@@ -63,7 +63,7 @@ export const NFT_CHART_API = 'https://ybrjmu6r60.execute-api.eu-west-2.amazonaws
 export const NFT_CHAINS_API = 'https://ybrjmu6r60.execute-api.eu-west-2.amazonaws.com/prod/chains'
 export const NFT_SEARCH_API = 'https://ybrjmu6r60.execute-api.eu-west-2.amazonaws.com/prod/search'
 
-const STABLECOINS_SERVER_URL = process.env.STABLECOINS_SERVER_URL ?? 'https://stablecoins.llama.fi'
+const STABLECOINS_SERVER_URL = 'https://stablecoins.llama.fi'
 export const PEGGEDS_API = `${STABLECOINS_SERVER_URL}/stablecoins`
 export const PEGGED_API = `${STABLECOINS_SERVER_URL}/stablecoin`
 export const PEGGEDCHART_API = `${STABLECOINS_SERVER_URL}/stablecoincharts2`
@@ -74,7 +74,7 @@ export const PEGGEDDOMINANCE_API = `${STABLECOINS_SERVER_URL}/stablecoindominanc
 export const PEGGEDPRICES_API = `${STABLECOINS_SERVER_URL}/stablecoinprices`
 export const PEGGEDRATES_API = `${STABLECOINS_SERVER_URL}/rates`
 
-const BRIDGES_SERVER_URL = process.env.BRIDGES_SERVER_URL ?? 'https://bridges.llama.fi'
+const BRIDGES_SERVER_URL = 'https://bridges.llama.fi'
 export const BRIDGEDAYSTATS_API = `${BRIDGES_SERVER_URL}/bridgedaystats`
 export const BRIDGES_API = `${BRIDGES_SERVER_URL}/bridges`
 export const BRIDGEVOLUME_API = `${BRIDGES_SERVER_URL}/bridgevolume`
@@ -83,7 +83,7 @@ export const BRIDGETX_API = `${BRIDGES_SERVER_URL}/transactions`
 export const BRIDGEINFLOWS_API = `${SERVER_URL}/chain-assets/historical-flows`
 export const NETFLOWS_API = `${BRIDGES_SERVER_URL}/netflows`
 
-const YIELDS_SERVER_URL = process.env.YIELDS_SERVER_URL ?? 'https://yields.llama.fi'
+const YIELDS_SERVER_URL = 'https://yields.llama.fi'
 export const YIELD_POOLS_API = `${YIELDS_SERVER_URL}/pools`
 export const YIELD_POOLS_LAMBDA_API = `${YIELDS_SERVER_URL}/poolsEnriched`
 export const YIELD_CHART_API = `${YIELDS_SERVER_URL}/chart`
@@ -99,7 +99,7 @@ export const YIELD_PROJECT_MEDIAN_API = `${YIELDS_SERVER_URL}/medianProject`
 export const YIELD_RISK_API_EXPONENTIAL = `${YIELDS_SERVER_URL}/risk`
 export const LSD_RATES_API = `${YIELDS_SERVER_URL}/lsdRates`
 
-const ETF_SERVER_URL = process.env.ETF_SERVER_URL ?? 'https://etfs.llama.fi'
+const ETF_SERVER_URL = 'https://etfs.llama.fi'
 export const ETF_SNAPSHOT_API = `${ETF_SERVER_URL}/snapshot`
 export const ETF_FLOWS_API = `${ETF_SERVER_URL}/flows`
 
@@ -111,7 +111,7 @@ export const CHAINS_API_V2 = `${SERVER_URL}/chains2`
 export const CHAIN_ASSETS_FLOWS = `${SERVER_URL}/chain-assets/flows`
 export const CHAINS_ASSETS_CHART = `${SERVER_URL}/chain-assets/chart`
 
-const DIMENSIONS_SERVER_URL = process.env.DIMENSIONS_SERVER_URL ?? SERVER_URL
+const DIMENSIONS_SERVER_URL = SERVER_URL
 export const DIMENISIONS_OVERVIEW_API = `${DIMENSIONS_SERVER_URL}/overview`
 export const BASE_API = `${SERVER_URL}/`
 export const DIMENISIONS_SUMMARY_BASE_API = `${DIMENSIONS_SERVER_URL}/summary`
@@ -142,13 +142,13 @@ export const HACKS_API = `${SERVER_URL}/hacks`
 
 export const DEV_METRICS_API = `${DATASETS_SERVER_URL}dev-metrics/github`
 
-const COINS_SERVER_URL = process.env.COINS_SERVER_URL ?? 'https://coins.llama.fi'
+const COINS_SERVER_URL = 'https://coins.llama.fi'
 export const COINS_PRICES_API = `${COINS_SERVER_URL}/prices`
 export const COINS_CHART_API = `${COINS_SERVER_URL}/chart`
 
 export const CACHE_SERVER = 'https://fe-cache.llama.fi'
 
-const FDV_SERVER_URL = process.env.FDV_SERVER_URL ?? 'https://fdv-server.llama.fi'
+const FDV_SERVER_URL = 'https://fdv-server.llama.fi'
 export const CATEGORY_PERFORMANCE_API = `${FDV_SERVER_URL}/performance`
 export const CATEGORY_COIN_PRICES_API = `${FDV_SERVER_URL}/prices`
 export const CATEGORY_INFO_API = `${FDV_SERVER_URL}/info`
