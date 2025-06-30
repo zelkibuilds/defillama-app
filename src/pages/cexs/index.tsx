@@ -5,7 +5,7 @@ import { withPerformanceLogging } from '~/utils/perf'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Cexs } from '~/containers/Cexs'
 import { fetchWithErrorLogging } from '~/utils/async'
-import { COINS_API, INFLOWS_API, PROTOCOL_API } from '~/constants'
+import { COINS_PRICES_API, INFLOWS_API, PROTOCOL_API } from '~/constants'
 
 const fetch = fetchWithErrorLogging
 
@@ -692,7 +692,7 @@ export const getStaticProps = withPerformanceLogging('cexs/index', async () => {
 				'x-cg-pro-api-key': process.env.CG_KEY
 			}
 		}).then((r) => r.json()),
-		fetch(`${COINS_API}/prices/current/coingecko:bitcoin`).then((r) => r.json())
+		fetch(`${COINS_PRICES_API}/current/coingecko:bitcoin`).then((r) => r.json())
 	])
 	const cexs = await Promise.all(
 		cexData.map(async (c) => {

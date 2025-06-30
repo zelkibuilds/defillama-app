@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import {
 	CACHE_SERVER,
-	COINS_API,
+	COINS_PRICES_API,
 	DEV_METRICS_API,
 	PROTOCOLS_API,
 	PROTOCOL_ACTIVE_USERS_API,
@@ -282,7 +282,7 @@ export const useDenominationPriceHistory = (geckoId?: string) => {
 }
 
 export const useGetTokenPrice = (geckoId?: string) => {
-	let url = geckoId ? `${COINS_API}/prices/current/coingecko:${geckoId}` : null
+	let url = geckoId ? `${COINS_PRICES_API}/current/coingecko:${geckoId}` : null
 	const isEnabled = !!url
 	const { data, isLoading, error } = useQuery({
 		queryKey: ['gecko-token-price', url, isEnabled],

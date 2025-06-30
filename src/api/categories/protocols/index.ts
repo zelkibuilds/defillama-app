@@ -23,7 +23,7 @@ import {
 	CATEGORY_COIN_PRICES_API,
 	CATEGORY_INFO_API,
 	COINS_INFO_API,
-	COINS_API
+	COINS_PRICES_API
 } from '~/constants'
 import { BasicPropsToKeep, formatProtocolsData } from './utils'
 import { fetchWithErrorLogging } from '~/utils/async'
@@ -39,7 +39,7 @@ export const getAllProtocolEmissionsWithHistory = async ({
 	try {
 		const res = await fetchWithErrorLogging(PROTOCOL_EMISSIONS_API).then((res) => res.json())
 		const coins = await fetchWithErrorLogging(
-			`${COINS_API}/prices/current/${res
+			`${COINS_PRICES_API}/current/${res
 				.filter((p) => p.gecko_id)
 				.map((p) => 'coingecko:' + p.gecko_id)
 				.join(',')}`
@@ -112,7 +112,7 @@ export const getAllProtocolEmissions = async ({
 	try {
 		const res = await fetchWithErrorLogging(PROTOCOL_EMISSIONS_API).then((res) => res.json())
 		const coins = await fetchWithErrorLogging(
-			`${COINS_API}/prices/current/${res
+			`${COINS_PRICES_API}/current/${res
 				.filter((p) => p.gecko_id)
 				.map((p) => 'coingecko:' + p.gecko_id)
 				.join(',')}`
@@ -262,7 +262,7 @@ export const getProtocolEmissons = async (protocolName: string) => {
 		const protocolEmissions = { documented: {}, realtime: {} }
 		const emissionCategories = { documented: [], realtime: [] }
 
-		const prices = await fetchWithErrorLogging(`${COINS_API}/prices/current/${metadata.token}?searchWidth=4h`)
+		const prices = await fetchWithErrorLogging(`${COINS_PRICES_API}/current/${metadata.token}?searchWidth=4h`)
 			.then((res) => res.json())
 			.catch((err) => {
 				console.log(err)

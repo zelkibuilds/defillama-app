@@ -4,7 +4,7 @@ import {
 	DIMENISIONS_SUMMARY_BASE_API,
 	EMISSION_BREAKDOWN_API,
 	DIMENISIONS_OVERVIEW_API,
-	COINS_API
+	COINS_PRICES_API
 } from '~/constants'
 import { getUniqueArray } from '~/containers/DimensionAdapters/utils'
 import {

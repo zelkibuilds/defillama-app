@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { IResponseCGMarketsAPI } from '~/api/types'
 import { useRouter } from 'next/router'
-import { CACHE_SERVER, COINS_API } from '~/constants'
+import { CACHE_SERVER, COINS_PRICES_API } from '~/constants'
 import { LocalLoader } from '~/components/LocalLoader'
 import { CoinsPicker } from '~/containers/Correlations'
 import { useQuery } from '@tanstack/react-query'
@@ -35,7 +35,7 @@ export default function CompareFdv({ coinsData, protocols }) {
 			coins.length == 2
 				? () =>
 						Promise.all([
-							fetch(`${COINS_API}/prices/current/${coins.map((c) => 'coingecko:' + c).join(',')}`).then((res) =>
+							fetch(`${COINS_PRICES_API}/current/${coins.map((c) => 'coingecko:' + c).join(',')}`).then((res) =>
 								res.json()
 							),
 							fetch(`${CACHE_SERVER}/supply/${coins[0]}`).then((res) => res.json()),

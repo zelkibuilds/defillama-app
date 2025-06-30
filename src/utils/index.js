@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import { COINS_API, ICONS_CDN, ICONS_PALETTE_CDN, timeframeOptions } from '~/constants'
+import { COINS_PRICES_API, ICONS_CDN, ICONS_PALETTE_CDN, timeframeOptions } from '~/constants'
 export * from './blockExplorers'
 import { colord, extend } from 'colord'
 import lchPlugin from 'colord/plugins/lch'
@@ -645,7 +645,7 @@ export async function batchFetchHistoricalPrices(priceReqs, batchSize = 15) {
 	for (const batch of batches) {
 		const batchReqs = Object.fromEntries(batch)
 		const response = await fetchWithErrorLogging(
-			`${COINS_API}/batchHistorical?coins=${JSON.stringify(batchReqs)}&searchWidth=6h`
+			`${COINS_PRICES_API}/batchHistorical?coins=${JSON.stringify(batchReqs)}&searchWidth=6h`
 		).then((res) => res.json())
 
 		for (const coinId of batch) {

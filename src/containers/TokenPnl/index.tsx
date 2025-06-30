@@ -7,7 +7,7 @@ import { CoinsPicker } from '~/containers/Correlations'
 import { formattedNum } from '~/utils'
 import { Icon } from '~/components/Icon'
 import * as Ariakit from '@ariakit/react'
-import { COINS_API } from '~/constants'
+import { COINS_CHART_API } from '~/constants'
 
 const unixToDateString = (unixTimestamp) => {
 	if (!unixTimestamp) return ''
@@ -47,7 +47,7 @@ export default function TokenPnl({ coinsData }) {
 		if (!id) return null
 		const key = `coingecko:${id}`
 		const spanInDays = Math.ceil((end - start) / (24 * 60 * 60))
-		const chartRes = await fetch(`${COINS_API}/chart/${key}?start=${start}&span=${spanInDays}&searchWidth=600`).then(
+		const chartRes = await fetch(`${COINS_CHART_API}/${key}?start=${start}&span=${spanInDays}&searchWidth=600`).then(
 			(r) => r.json()
 		)
 

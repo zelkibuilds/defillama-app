@@ -2,7 +2,7 @@ import { fetchWithErrorLogging } from '~/utils/async'
 import { IChainTvl } from '~/api/types'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { cexData as cexList } from '~/pages/cexs'
-import { COINS_API, INFLOWS_API, PROTOCOL_API } from '~/constants'
+import { COINS_PRICES_API, INFLOWS_API, PROTOCOL_API } from '~/constants'
 
 const fetch = fetchWithErrorLogging
 
@@ -48,7 +48,7 @@ export async function getCexData(req: NextApiRequest, res: NextApiResponse) {
 					'x-cg-pro-api-key': process.env.CG_KEY
 				}
 			}).then((res) => res.json()),
-			fetch(`${COINS_API}/prices/current/coingecko:bitcoin`).then((res) => res.json())
+			fetch(`${COINS_PRICES_API}/current/coingecko:bitcoin`).then((res) => res.json())
 		])
 
 		spot = spotData
