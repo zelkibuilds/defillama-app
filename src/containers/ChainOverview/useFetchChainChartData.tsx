@@ -222,9 +222,9 @@ export const useFetchChainChartData = ({
 		})
 
 		const finalChainIncentivesChart =
-			isNonUSDDenomination && chainIncentives?.incentivesChart
+			(isNonUSDDenomination && chainIncentives?.incentivesChart
 				? chainIncentives.incentivesChart.map(([date, value]) => [date, value / normalizedDenomination[date]])
-				: chainIncentives?.incentivesChart ?? null
+				: chainIncentives?.incentivesChart) ?? null
 
 		const chartDatasets = [
 			{

@@ -16,7 +16,12 @@ const TREASURY_DATA_URL = 'https://api.llama.fi/treasuries'
 const PROTOCOL_EMISSIONS_LIST_API = 'https://defillama-datasets.llama.fi/emissionsProtocolsList'
 const FIVE_MINUTES = 5 * 60 * 1000
 
-const fetchJson = async (url) => fetch(url).then((res) => res.json())
+const fetchJson = async (url) =>
+	fetch(url)
+		.then((res) => res.json())
+		.catch((error) => {
+			console.log(error, url)
+		})
 
 async function pullData() {
 	try {

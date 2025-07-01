@@ -19,6 +19,7 @@ import { fetchWithErrorLogging } from '~/utils/async'
 import { TagGroup } from '~/components/TagGroup'
 import { Announcement } from '~/components/Announcement'
 import { Icon } from '~/components/Icon'
+import { BasicLink } from '~/components/Link'
 
 const columns = ['name', 'medianAmount', 'chains', 'projects', 'deals', 'category', 'roundType']
 
@@ -146,9 +147,14 @@ const ActiveInvestors = ({ data }) => {
 		<Layout title={`Investors - DefiLlama`} defaultSEO className="gap-4">
 			<Announcement notCancellable>
 				<span>Looking for investors?</span>{' '}
-				<a href="/pitch" className="text-[var(--blue)] underline font-medium" target="_blank" rel="noopener noreferrer">
+				<BasicLink
+					href="/pitch"
+					className="text-[var(--blue)] underline font-medium"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					Send your pitch to selected ones through us
-				</a>
+				</BasicLink>
 			</Announcement>
 
 			<div className="bg-[var(--cards-bg)] rounded-md">

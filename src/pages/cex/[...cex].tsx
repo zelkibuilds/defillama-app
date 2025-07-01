@@ -94,7 +94,7 @@ export async function getStaticPaths() {
 			params: { cex: [slug] }
 		}))
 
-	return { paths, fallback: 'blocking' }
+	return { paths: [], fallback: 'blocking' }
 }
 
 export default function Protocols({ protocolData, ...props }) {

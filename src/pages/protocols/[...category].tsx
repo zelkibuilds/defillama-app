@@ -46,7 +46,7 @@ export async function getStaticPaths() {
 		params: { category: [slug(category)] }
 	}))
 
-	return { paths, fallback: 'blocking' }
+	return { paths: [], fallback: 'blocking' }
 }
 
 export default function Protocols(props) {

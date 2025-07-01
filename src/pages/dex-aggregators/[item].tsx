@@ -36,7 +36,7 @@ export const getStaticPaths = async () => {
 			paths.push({ params: { item: slug(item.linkedProtocols[0]) } })
 		}
 	}
-	return { paths, fallback: 'blocking' }
+	return { paths: [], fallback: 'blocking' }
 }
 
 export const getStaticProps = withPerformanceLogging(

@@ -50,7 +50,7 @@ export async function getStaticPaths() {
 		}
 	})
 
-	return { paths, fallback: 'blocking' }
+	return { paths: [], fallback: 'blocking' }
 }
 
 const PageView = ({ chartData, tokenLinks, token, filteredProtocols, chain, chainChartData }) => {
@@ -61,10 +61,10 @@ const PageView = ({ chartData, tokenLinks, token, filteredProtocols, chain, chai
 			extraTvlsEnabled
 		})
 
-		const protocolsData = dataWithTvs.map(p => ({
+		const protocolsData = dataWithTvs.map((p) => ({
 			...p,
 			tvs: p.tvs ?? p.tvl ?? 0
-		}));
+		}))
 
 		const finalChartData = formatChartTvlsByDay({ data: chainChartData || chartData, extraTvlsEnabled, key: 'TVS' })
 
