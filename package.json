@@ -11,12 +11,13 @@
 	},
 	"scripts": {
 		"analyze": "ANALYZE=true yarn build",
-		"build": "yarn run build:metadata && next build",
 		"build:metadata": "node scripts/pullMetadata.js",
+		"build": "yarn run build:metadata && ./scripts/build.sh",
+		"start": "./scripts/prestart.sh & next start --keepAliveTimeout 61000",
+		"start:server": "./scripts/prestart.sh & node server.js",
 		"dev": "yarn run build:metadata && next dev",
 		"format": "prettier --write .",
 		"lint": "next lint",
-		"start": "next start",
 		"ts": "tsc --noEmit"
 	},
 	"dependencies": {
