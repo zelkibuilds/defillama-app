@@ -557,8 +557,7 @@ const nextConfig = {
 	},
 	images: {
 		domains: ['icons.llama.fi', 'assets.coingecko.com', 'yield-charts.llama.fi', 'icons.llamao.fi']
-	},
-	output: 'export'
+	}
 }
 
 export default nextConfig
