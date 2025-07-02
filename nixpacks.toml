@@ -1,12 +1,14 @@
 [phases.setup]
-nixPkgs = ['bun']
+nixPkgs = ['nodejs_20', 'yarn']
 aptPkgs = ['build-essential']
 
 [phases.install]
-cmds = ["bun install"]
+cmds = ["yarn install --frozen-lockfile"]
+cacheDirectories = ["node_modules", ".yarn/cache"]
 
 [phases.build]
-cmds = ["bun run build"]
+cmds = ["yarn run build"]
+cacheDirectories = [".next/cache"]
 
 [start]
-cmd = "bun run start"
+cmd = "yarn run start"
