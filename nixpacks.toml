@@ -7,8 +7,17 @@ cmds = ["yarn install --frozen-lockfile"]
 cacheDirectories = ["node_modules", ".yarn/cache"]
 
 [phases.build]
-cmds = ["yarn run build"]
+cmds = ["yarn run build:metadata", "yarn next build"]
 cacheDirectories = [".next/cache"]
+env = [
+  "NODE_ENV=production",
+  "NEXT_TELEMETRY_DISABLED=1",
+  "YARN_CACHE_FOLDER=.yarn/cache"
+]
 
 [start]
 cmd = "yarn run start"
+env = [
+  "NODE_ENV=production",
+  "NEXT_TELEMETRY_DISABLED=1"
+]
