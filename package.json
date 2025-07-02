@@ -11,12 +11,12 @@
 	},
 	"scripts": {
 		"analyze": "ANALYZE=true yarn build",
-		"build": "yarn run build:metadata && next build",
 		"build:metadata": "node scripts/pullMetadata.js",
-		"dev": "yarn run build:metadata && next dev",
+		"dev": "yarn run build:metadata && nodemon",
+		"build": "yarn run build:metadata && next build && tsc --project tsconfig.server.json",
+		"start": "cross-env NODE_ENV=production node dist/server.js",
 		"format": "prettier --write .",
 		"lint": "next lint",
-		"start": "next start",
 		"ts": "tsc --noEmit"
 	},
 	"dependencies": {
@@ -30,6 +30,7 @@
 		"@tanstack/react-table": "8.20.5",
 		"@tanstack/react-virtual": "3.10.9",
 		"colord": "2.9.3",
+		"cross-env": "^7.0.3",
 		"dayjs": "1.11.3",
 		"echarts": "5.6.0",
 		"echarts-simple-transform": "1.0.0",
@@ -67,9 +68,11 @@
 		"eslint": "^9.30.0",
 		"eslint-config-next": "^15.3.4",
 		"eslint-config-prettier": "8.3.0",
+		"nodemon": "^3.1.10",
 		"postcss": "8.4.49",
 		"prettier": "2.5.1",
 		"tailwindcss": "3.4.15",
+		"ts-node": "^10.9.2",
 		"typescript": "^5.8.3"
 	}
 }
