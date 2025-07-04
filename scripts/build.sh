@@ -21,8 +21,8 @@ echo "📸 $COMMIT_HASH"
 echo "======================="
 echo ""
 
-next build 2>&1 | tee build.log
-BUILD_STATUS=${PIPESTATUS[0]}
+bun run build 2>&1 | tee build.log
+BUILD_STATUS=$?
 
 BUILD_TIME_SEC=$(($(date -u +"%s") - $START_TIME_TS))
 BUILD_TIME_MIN=$(($BUILD_TIME_SEC / 60))
