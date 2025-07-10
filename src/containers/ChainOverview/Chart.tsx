@@ -133,7 +133,7 @@ export function ChainChart({
 			const namePrefix = isCompare ? data?.chain + ' ' : ''
 
 			if (route[chainCharts['TVL']] !== 'false') {
-				const color = getColor(isCompare) || chainOverviewChartColors.tvl
+				const color = getColor(isCompare) || chainOverviewChartColors['TVL']
 				const areaColor = getAreaColor(color, isThemeDark)
 
 				series.push({
@@ -159,7 +159,7 @@ export function ChainChart({
 				})
 			}
 			if (route[chainCharts['DEXs Volume']] === 'true' && (data?.dexsChart || data?.volumeChart)) {
-				const color = getColor(isCompare) || chainOverviewChartColors.dexsVolume
+				const color = getColor(isCompare) || chainOverviewChartColors['DEXs Volume']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: namePrefix + 'DEXs Volume',
@@ -181,7 +181,7 @@ export function ChainChart({
 			}
 
 			if (route[chainCharts['Chain Fees']] === 'true' && data?.feesChart) {
-				const color = getColor(isCompare) || chainOverviewChartColors.chainFees
+				const color = getColor(isCompare) || chainOverviewChartColors['Chain Fees']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: namePrefix + 'Chain Fees',
@@ -201,7 +201,7 @@ export function ChainChart({
 			}
 
 			if (route[chainCharts['Chain Revenue']] === 'true' && data?.feesChart) {
-				const color = getColor(isCompare) || chainOverviewChartColors.chainRevenue
+				const color = getColor(isCompare) || chainOverviewChartColors['Chain Revenue']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: namePrefix + 'Chain Revenue',
@@ -221,7 +221,7 @@ export function ChainChart({
 			}
 
 			if (route[chainCharts['App Revenue']] === 'true' && data?.appRevenueChart) {
-				const color = getColor(isCompare) || chainOverviewChartColors.appRevenue
+				const color = getColor(isCompare) || chainOverviewChartColors['App Revenue']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: namePrefix + 'App Revenue',
@@ -241,7 +241,7 @@ export function ChainChart({
 			}
 
 			if (route[chainCharts['App Fees']] === 'true' && data?.appFeesChart) {
-				const color = getColor(isCompare) || chainOverviewChartColors.appFees
+				const color = getColor(isCompare) || chainOverviewChartColors['App Fees']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: namePrefix + 'App Fees',
@@ -261,8 +261,8 @@ export function ChainChart({
 			}
 
 			if (route[chainCharts['Active Addresses']] === 'true' && data?.usersData?.length > 0) {
-				const color1 = getColor(isCompare) || chainOverviewChartColors.activeAddresses
-				const color2 = getColor(isCompare) || chainOverviewChartColors.newAddresses
+				const color1 = getColor(isCompare) || chainOverviewChartColors['Active Addresses']
+				const color2 = getColor(isCompare) || chainOverviewChartColors['New Addresses']
 
 				const areaColor = getAreaColor(color1, isThemeDark)
 				series.push({
@@ -300,7 +300,7 @@ export function ChainChart({
 			}
 
 			if (route[chainCharts['Raises']] === 'true' && data?.raisesData) {
-				const color = getColor(isCompare) || chainOverviewChartColors.raises
+				const color = getColor(isCompare) || chainOverviewChartColors['Raises']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: 'Raises',
@@ -321,7 +321,7 @@ export function ChainChart({
 			}
 
 			if (route[chainCharts['Stablecoins Mcap']] === 'true' && data?.totalStablesData) {
-				const color = getColor(isCompare) || chainOverviewChartColors.stablecoinsMcap
+				const color = getColor(isCompare) || chainOverviewChartColors['Stablecoins Mcap']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: namePrefix + 'Stablecoins Mcap',
@@ -341,7 +341,7 @@ export function ChainChart({
 			}
 
 			if (route[chainCharts['Transactions']] === 'true' && data?.txsData?.length > 0) {
-				const color = getColor(isCompare) || chainOverviewChartColors.transactions
+				const color = getColor(isCompare) || chainOverviewChartColors['Transactions']
 				const areaColor = getAreaColor(color, isThemeDark)
 
 				series.push({
@@ -362,7 +362,7 @@ export function ChainChart({
 			}
 
 			if (route[chainCharts['Net Inflows']] === 'true' && data?.bridgeData && data?.bridgeData?.length > 0) {
-				const color = getColor(isCompare) || chainOverviewChartColors.netInflows
+				const color = getColor(isCompare) || chainOverviewChartColors['Net Inflows']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: namePrefix + 'Net Inflows',
@@ -387,7 +387,7 @@ export function ChainChart({
 				data?.developersChart &&
 				data?.developersChart?.length > 0
 			) {
-				const color = getColor(isCompare) || chainOverviewChartColors.devsMetrics
+				const color = getColor(isCompare) || chainOverviewChartColors['Core Developers']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: namePrefix + 'Core Developers',
@@ -408,7 +408,7 @@ export function ChainChart({
 			}
 
 			if (route[chainCharts['Devs Commits']] === 'true' && data?.commitsChart && data?.commitsChart?.length > 0) {
-				const color = getColor(isCompare) || chainOverviewChartColors.devsCommits
+				const color = getColor(isCompare) || chainOverviewChartColors['Devs Commits']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: namePrefix + 'Devs Commits',
@@ -428,7 +428,7 @@ export function ChainChart({
 			}
 
 			if (route[chainCharts['Token Price']] === 'true' && data?.chainTokenPriceData && denomination === 'USD') {
-				const color = getColor(isCompare) || chainOverviewChartColors.chainTokenPrice
+				const color = getColor(isCompare) || chainOverviewChartColors['Token Price']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: namePrefix + 'Token Price',
@@ -449,7 +449,7 @@ export function ChainChart({
 			}
 
 			if (route[chainCharts['Token Mcap']] === 'true' && data?.chainTokenMcapData) {
-				const color = getColor(isCompare) || chainOverviewChartColors.chainTokenMcap
+				const color = getColor(isCompare) || chainOverviewChartColors['Token Mcap']
 				const areaColor = getAreaColor(color, isThemeDark)
 
 				series.push({
@@ -471,7 +471,7 @@ export function ChainChart({
 			}
 
 			if (route[chainCharts['Perps Volume']] === 'true' && data?.perpsChart) {
-				const color = getColor(isCompare) || chainOverviewChartColors.perpsVolume
+				const color = getColor(isCompare) || chainOverviewChartColors['Perps Volume']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: namePrefix + 'Perps Volume',
@@ -491,7 +491,7 @@ export function ChainChart({
 				})
 			}
 			if (route[chainCharts['Bridged TVL']] === 'true' && data?.chainAssetsData) {
-				const color = getColor(isCompare) || chainOverviewChartColors.bridgedTVL
+				const color = getColor(isCompare) || chainOverviewChartColors['Bridged TVL']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: namePrefix + 'Bridged TVL',
@@ -510,7 +510,7 @@ export function ChainChart({
 				})
 			}
 			if (route[chainCharts['Token Volume']] === 'true' && data?.chainTokenVolumeData) {
-				const color = getColor(isCompare) || chainOverviewChartColors.chainTokenVolume
+				const color = getColor(isCompare) || chainOverviewChartColors['Token Volume']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: namePrefix + 'Token Volume',
@@ -531,7 +531,7 @@ export function ChainChart({
 			}
 
 			if (route[chainCharts['Token Incentives']] === 'true' && data?.chainIncentivesChart) {
-				const color = getColor(isCompare) || chainOverviewChartColors.tokenIncentives
+				const color = getColor(isCompare) || chainOverviewChartColors['Token Incentives']
 				const areaColor = getAreaColor(color, isThemeDark)
 				series.push({
 					name: namePrefix + 'Token Incentives',
@@ -670,7 +670,7 @@ export function ChainChart({
 					id: 'DEXs Volume',
 					axisLabel: {
 						...yAxis.axisLabel,
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.dexsVolume)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['DEXs Volume'])
 					}
 				},
 				{
@@ -678,7 +678,7 @@ export function ChainChart({
 					id: 'Chain Fees',
 					axisLabel: {
 						...yAxis.axisLabel,
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.chainFees)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Chain Fees'])
 					}
 				},
 				{
@@ -686,7 +686,7 @@ export function ChainChart({
 					id: 'Chain Revenue',
 					axisLabel: {
 						...yAxis.axisLabel,
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.chainRevenue)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Chain Revenue'])
 					}
 				},
 				{
@@ -694,7 +694,7 @@ export function ChainChart({
 					id: 'App Revenue',
 					axisLabel: {
 						...yAxis.axisLabel,
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.appRevenue)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['App Revenue'])
 					}
 				},
 				{
@@ -702,14 +702,14 @@ export function ChainChart({
 					id: 'App Fees',
 					axisLabel: {
 						...yAxis.axisLabel,
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.appFees)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['App Fees'])
 					}
 				},
 				{
 					...yAxis,
 					axisLabel: {
 						formatter: (value) => toK(value) + ' ' + 'Active Addresses',
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.activeAddresses)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Active Addresses'])
 					},
 					id: 'Active Addresses'
 				},
@@ -718,7 +718,7 @@ export function ChainChart({
 					id: 'Raises',
 					axisLabel: {
 						...yAxis.axisLabel,
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.raises)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Raises'])
 					}
 				},
 				{
@@ -726,14 +726,14 @@ export function ChainChart({
 					id: 'Stablecoins Mcap',
 					axisLabel: {
 						...yAxis.axisLabel,
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.stablecoinsMcap)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Stablecoins Mcap'])
 					}
 				},
 				{
 					...yAxis,
 					axisLabel: {
 						formatter: (value) => toK(value) + ' ' + 'TXs',
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.transactions)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Transactions'])
 					},
 					id: 'Transactions'
 				},
@@ -742,7 +742,7 @@ export function ChainChart({
 					id: 'Net Inflows',
 					axisLabel: {
 						...yAxis.axisLabel,
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.netInflows)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Net Inflows'])
 					}
 				},
 				{
@@ -751,7 +751,7 @@ export function ChainChart({
 					axisLabel: {
 						...yAxis.axisLabel,
 						formatter: (value) => value + ' devs',
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.devsMetrics)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Core Developers'])
 					}
 				},
 				{
@@ -760,7 +760,7 @@ export function ChainChart({
 					axisLabel: {
 						...yAxis.axisLabel,
 						formatter: (value) => value + ' commits',
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.devsCommits)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Devs Commits'])
 					}
 				},
 				{
@@ -768,7 +768,7 @@ export function ChainChart({
 					id: 'Token Price',
 					axisLabel: {
 						...yAxis.axisLabel,
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.chainTokenPrice)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Token Price'])
 					}
 				},
 				{
@@ -776,7 +776,7 @@ export function ChainChart({
 					id: 'Token Mcap',
 					axisLabel: {
 						...yAxis.axisLabel,
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.chainTokenMcap)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Token Mcap'])
 					}
 				},
 				{
@@ -784,7 +784,7 @@ export function ChainChart({
 					id: 'Perps Volume',
 					axisLabel: {
 						...yAxis.axisLabel,
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.perpsVolume)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Perps Volume'])
 					}
 				},
 				{
@@ -793,7 +793,7 @@ export function ChainChart({
 					id: 'Bridged TVL',
 					axisLabel: {
 						...yAxis.axisLabel,
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.bridgedTVL)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Bridged TVL'])
 					}
 				},
 				{
@@ -801,7 +801,7 @@ export function ChainChart({
 					id: 'Token Volume',
 					axisLabel: {
 						...yAxis.axisLabel,
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.chainTokenVolume)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Token Volume'])
 					}
 				},
 				{
@@ -809,7 +809,7 @@ export function ChainChart({
 					id: 'Token Incentives',
 					axisLabel: {
 						...yAxis.axisLabel,
-						color: () => (isCompare ? '#fff' : chainOverviewChartColors.tokenIncentives)
+						color: () => (isCompare ? '#fff' : chainOverviewChartColors['Token Incentives'])
 					}
 				}
 			].map((yAxis: any, i) => {
